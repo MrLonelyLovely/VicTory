@@ -6,7 +6,14 @@
 //  Copyright © 2019 陈沛. All rights reserved.
 //
 
+/*
+ 项目架构：主流结构（UITabBarController + 导航控制器）
+ 项目开发方式：1.storyboard 2.纯代码
+ 
+ */
 #import "AppDelegate.h"
+
+#import "TabBarController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +23,18 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+//    1.创建窗口
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+//    2.设置窗口根控制器
+    TabBarController *tabBarVC = [[TabBarController alloc] init];
+    self.window.rootViewController = tabBarVC;
+    
+    //2.1 添加子控制器
+    
+    
+//    3.显示窗口 (1.成为UIApplication主窗口 2.
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#define CustomRGB(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1]
 
 @interface ViewController ()
 
@@ -16,7 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(100, 100, 50, 50)];
+    view.backgroundColor = CustomRGB(150, 150, 150);
+    [self.view addSubview:view];
 }
 
 
