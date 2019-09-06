@@ -29,12 +29,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.interactivePopGestureRecognizer.delegate = self;
+    
+#warning 没有成功
+    /*
+    //全屏滑动
+    UIPanGestureRecognizer *panGes = [[UIPanGestureRecognizer alloc] initWithTarget:self.interactivePopGestureRecognizer.delegate action:@selector(handleNavgationTransition:)];
+    
+    [self.view addGestureRecognizer:panGes];
+    //控制手势什么时候触发，只有非根控制器才需要触发手势
+    panGes.delegate = self;
+    //禁止之前的手势（边缘滑动手势）
+    self.interactivePopGestureRecognizer.enabled = NO;
+     */
 }
 
+-(void)handleNavgationTransition:(id)someThing
+{
+    
+}
 //如果不设置这个方法的话，应用程序就会进入假死状态：程序还在运行，但界面已经卡死了
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
 #warning 这里为什么是大于1呢？而不是大于0呢？
+    //只有非根控制器才需要触发手势
     return self.childViewControllers.count > 1;
 }
 
@@ -51,6 +68,7 @@
 {
     [self popViewControllerAnimated:YES];
 }
+
 /*
 #pragma mark - Navigation
 

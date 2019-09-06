@@ -1,0 +1,25 @@
+//
+//  VicTory.pch
+//  VicTory
+//
+//  Created by 陈沛 on 2019/9/4.
+//  Copyright © 2019 陈沛. All rights reserved.
+//
+
+/*
+ 1.存放公用宏
+ 2.存放公用的头文件
+ 3.自定义Log
+ 使用步骤：提前编译pch->build Settings->prefix header上填写.pch路径
+ */
+#import "UIBarButtonItem+Item.h"
+#define SCREEN_W [UIScreen mainScreen].bounds.size.width
+#define SCREEN_H [UIScreen mainScreen].bounds.size.height
+
+#ifdef DEBUG  //调试阶段
+
+#define CusLog(...) NSLog(__VA_ARGS__)
+
+#else  //发布阶段
+
+#endif
