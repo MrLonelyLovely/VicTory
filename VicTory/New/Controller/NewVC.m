@@ -7,6 +7,7 @@
 //
 
 #import "NewVC.h"
+#import "SubTagTVC.h"
 
 @interface NewVC ()
 
@@ -22,7 +23,7 @@
 - (void)setupNavBar
 {
     
-    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageString:@"MainTagSubIcon" highImageString:@"MainTagSubIconClick" target:self action:nil];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImageString:@"MainTagSubIcon" highImageString:@"MainTagSubIconClick" target:self action:@selector(tagBtnClick)];
     
     //    self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
     self.navigationItem.title = @"新帖";
@@ -32,6 +33,13 @@
     attrs[NSForegroundColorAttributeName] = [UIColor colorWithRed:203/255.0 green:27/255.0 blue:69/255.0 alpha:1.0];
     [self.navigationController.navigationBar setTitleTextAttributes:attrs];
     */
+}
+
+-(void)tagBtnClick
+{
+    SubTagTVC *subTagVC = [[SubTagTVC alloc] init];
+    
+    [self.navigationController pushViewController:subTagVC animated:YES];
 }
 /*
 #pragma mark - Navigation

@@ -27,6 +27,10 @@
 		34CE17D52320B06E009C2B3D /* AdverseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CE17D42320B06E009C2B3D /* AdverseVC.m */; };
 		34CE17D72320E317009C2B3D /* AdverseVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34CE17D62320E317009C2B3D /* AdverseVC.xib */; };
 		34CE17DA232238D3009C2B3D /* AdItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CE17D9232238D3009C2B3D /* AdItem.m */; };
+		34CE17DD23260E1A009C2B3D /* SubTagTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CE17DC23260E1A009C2B3D /* SubTagTVC.m */; };
+		34CE17E0232613D1009C2B3D /* SubTagItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CE17DF232613D1009C2B3D /* SubTagItem.m */; };
+		34D866C823261DD7002794B4 /* SubTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D866C623261DD7002794B4 /* SubTagCell.m */; };
+		34D866C923261DD7002794B4 /* SubTagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34D866C723261DD7002794B4 /* SubTagCell.xib */; };
 		576C1ADD4021AE123850802F /* libPods-VicTory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE3CF17FE6CBCBD6D3AFE9C /* libPods-VicTory.a */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +73,13 @@
 		34CE17D62320E317009C2B3D /* AdverseVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdverseVC.xib; sourceTree = "<group>"; };
 		34CE17D8232238D3009C2B3D /* AdItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdItem.h; sourceTree = "<group>"; };
 		34CE17D9232238D3009C2B3D /* AdItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdItem.m; sourceTree = "<group>"; };
+		34CE17DB23260E1A009C2B3D /* SubTagTVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubTagTVC.h; sourceTree = "<group>"; };
+		34CE17DC23260E1A009C2B3D /* SubTagTVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubTagTVC.m; sourceTree = "<group>"; };
+		34CE17DE232613D1009C2B3D /* SubTagItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubTagItem.h; sourceTree = "<group>"; };
+		34CE17DF232613D1009C2B3D /* SubTagItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubTagItem.m; sourceTree = "<group>"; };
+		34D866C523261DD7002794B4 /* SubTagCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubTagCell.h; sourceTree = "<group>"; };
+		34D866C623261DD7002794B4 /* SubTagCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubTagCell.m; sourceTree = "<group>"; };
+		34D866C723261DD7002794B4 /* SubTagCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubTagCell.xib; sourceTree = "<group>"; };
 		37EFEB275D6DDE8865B9B674 /* Pods-VicTory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTory.debug.xcconfig"; path = "Target Support Files/Pods-VicTory/Pods-VicTory.debug.xcconfig"; sourceTree = "<group>"; };
 		3F459BD2C57A9D0379B7FB50 /* Pods-VicTory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTory.release.xcconfig"; path = "Target Support Files/Pods-VicTory/Pods-VicTory.release.xcconfig"; sourceTree = "<group>"; };
 		EDE3CF17FE6CBCBD6D3AFE9C /* libPods-VicTory.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VicTory.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,6 +226,8 @@
 			children = (
 				34CE179E231D374C009C2B3D /* NewVC.h */,
 				34CE179F231D374C009C2B3D /* NewVC.m */,
+				34CE17DB23260E1A009C2B3D /* SubTagTVC.h */,
+				34CE17DC23260E1A009C2B3D /* SubTagTVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -222,6 +235,8 @@
 		34CE1783231D355C009C2B3D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				34CE17DE232613D1009C2B3D /* SubTagItem.h */,
+				34CE17DF232613D1009C2B3D /* SubTagItem.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,6 +244,9 @@
 		34CE1784231D355C009C2B3D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				34D866C523261DD7002794B4 /* SubTagCell.h */,
+				34D866C623261DD7002794B4 /* SubTagCell.m */,
+				34D866C723261DD7002794B4 /* SubTagCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -448,6 +466,7 @@
 				34A4E4A1231CD84B0041D405 /* Sources */,
 				34A4E4A2231CD84B0041D405 /* Frameworks */,
 				34A4E4A3231CD84B0041D405 /* Resources */,
+				584D889BAA6CF53BE33699B4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -495,6 +514,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34D866C923261DD7002794B4 /* SubTagCell.xib in Resources */,
 				34A4E4B5231CD84C0041D405 /* LaunchScreen.storyboard in Resources */,
 				34CE17D72320E317009C2B3D /* AdverseVC.xib in Resources */,
 				34A4E4B2231CD84C0041D405 /* Assets.xcassets in Resources */,
@@ -527,6 +547,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		584D889BAA6CF53BE33699B4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VicTory/Pods-VicTory-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VicTory/Pods-VicTory-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VicTory/Pods-VicTory-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -536,6 +573,7 @@
 			files = (
 				34A4E4AD231CD84B0041D405 /* ViewController.m in Sources */,
 				34CE17C4231FA31E009C2B3D /* UIBarButtonItem+Item.m in Sources */,
+				34CE17DD23260E1A009C2B3D /* SubTagTVC.m in Sources */,
 				34CE17B4231E4031009C2B3D /* UIImage+Image.m in Sources */,
 				34CE17CE231FCA6A009C2B3D /* SettingsVC.m in Sources */,
 				34CE17D52320B06E009C2B3D /* AdverseVC.m in Sources */,
@@ -544,11 +582,13 @@
 				34CE17DA232238D3009C2B3D /* AdItem.m in Sources */,
 				34CE17B0231E3C36009C2B3D /* TabBarController.m in Sources */,
 				34A4E4AA231CD84B0041D405 /* AppDelegate.m in Sources */,
+				34D866C823261DD7002794B4 /* SubTagCell.m in Sources */,
 				34CE179A231D36E1009C2B3D /* FriendTrendVC.m in Sources */,
 				34CE17A0231D374C009C2B3D /* NewVC.m in Sources */,
 				34CE17C7231FB94B009C2B3D /* CusNavigationController.m in Sources */,
 				34CE1797231D3699009C2B3D /* MeTVC.m in Sources */,
 				34CE17BA231E8DF1009C2B3D /* CusTabBar.m in Sources */,
+				34CE17E0232613D1009C2B3D /* SubTagItem.m in Sources */,
 				34CE179D231D36F5009C2B3D /* PublishVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

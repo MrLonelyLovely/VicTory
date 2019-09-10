@@ -58,6 +58,7 @@
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     if (self.childViewControllers.count > 0) {
+        viewController.hidesBottomBarWhenPushed = YES;
         //只有在非根控制器中才创建返回按钮
         viewController.navigationItem.leftBarButtonItem = [UIBarButtonItem backItemWithImageString:@"navigationButtonReturn" highImageString:@"navigationButtonReturnClick" target:self action:@selector(back) title:@"返回"];
     }
