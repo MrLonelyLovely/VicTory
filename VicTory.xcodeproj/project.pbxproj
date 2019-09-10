@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -31,6 +31,11 @@
 		34CE17E0232613D1009C2B3D /* SubTagItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CE17DF232613D1009C2B3D /* SubTagItem.m */; };
 		34D866C823261DD7002794B4 /* SubTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D866C623261DD7002794B4 /* SubTagCell.m */; };
 		34D866C923261DD7002794B4 /* SubTagCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34D866C723261DD7002794B4 /* SubTagCell.xib */; };
+		34D866CB23277C21002794B4 /* FriendTrendVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34D866CA23277C21002794B4 /* FriendTrendVC.xib */; };
+		34E2EA0223278AF000AD3534 /* LoginRegisterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E2EA0023278AF000AD3534 /* LoginRegisterVC.m */; };
+		34E2EA0323278AF000AD3534 /* LoginRegisterVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34E2EA0123278AF000AD3534 /* LoginRegisterVC.xib */; };
+		34E2EA062327CD5E00AD3534 /* LoginRegisterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E2EA052327CD5E00AD3534 /* LoginRegisterView.m */; };
+		34E2EA082327CD7700AD3534 /* LoginRegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34E2EA072327CD7700AD3534 /* LoginRegisterView.xib */; };
 		576C1ADD4021AE123850802F /* libPods-VicTory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE3CF17FE6CBCBD6D3AFE9C /* libPods-VicTory.a */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +85,13 @@
 		34D866C523261DD7002794B4 /* SubTagCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubTagCell.h; sourceTree = "<group>"; };
 		34D866C623261DD7002794B4 /* SubTagCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubTagCell.m; sourceTree = "<group>"; };
 		34D866C723261DD7002794B4 /* SubTagCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubTagCell.xib; sourceTree = "<group>"; };
+		34D866CA23277C21002794B4 /* FriendTrendVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTrendVC.xib; sourceTree = "<group>"; };
+		34E2E9FF23278AF000AD3534 /* LoginRegisterVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginRegisterVC.h; sourceTree = "<group>"; };
+		34E2EA0023278AF000AD3534 /* LoginRegisterVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginRegisterVC.m; sourceTree = "<group>"; };
+		34E2EA0123278AF000AD3534 /* LoginRegisterVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginRegisterVC.xib; sourceTree = "<group>"; };
+		34E2EA042327CD5E00AD3534 /* LoginRegisterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginRegisterView.h; sourceTree = "<group>"; };
+		34E2EA052327CD5E00AD3534 /* LoginRegisterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginRegisterView.m; sourceTree = "<group>"; };
+		34E2EA072327CD7700AD3534 /* LoginRegisterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginRegisterView.xib; sourceTree = "<group>"; };
 		37EFEB275D6DDE8865B9B674 /* Pods-VicTory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTory.debug.xcconfig"; path = "Target Support Files/Pods-VicTory/Pods-VicTory.debug.xcconfig"; sourceTree = "<group>"; };
 		3F459BD2C57A9D0379B7FB50 /* Pods-VicTory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTory.release.xcconfig"; path = "Target Support Files/Pods-VicTory/Pods-VicTory.release.xcconfig"; sourceTree = "<group>"; };
 		EDE3CF17FE6CBCBD6D3AFE9C /* libPods-VicTory.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VicTory.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -266,6 +278,10 @@
 			children = (
 				34CE1798231D36E1009C2B3D /* FriendTrendVC.h */,
 				34CE1799231D36E1009C2B3D /* FriendTrendVC.m */,
+				34D866CA23277C21002794B4 /* FriendTrendVC.xib */,
+				34E2E9FF23278AF000AD3534 /* LoginRegisterVC.h */,
+				34E2EA0023278AF000AD3534 /* LoginRegisterVC.m */,
+				34E2EA0123278AF000AD3534 /* LoginRegisterVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -280,6 +296,9 @@
 		34CE178C231D355C009C2B3D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				34E2EA042327CD5E00AD3534 /* LoginRegisterView.h */,
+				34E2EA052327CD5E00AD3534 /* LoginRegisterView.m */,
+				34E2EA072327CD7700AD3534 /* LoginRegisterView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -518,7 +537,10 @@
 				34A4E4B5231CD84C0041D405 /* LaunchScreen.storyboard in Resources */,
 				34CE17D72320E317009C2B3D /* AdverseVC.xib in Resources */,
 				34A4E4B2231CD84C0041D405 /* Assets.xcassets in Resources */,
+				34E2EA0323278AF000AD3534 /* LoginRegisterVC.xib in Resources */,
+				34D866CB23277C21002794B4 /* FriendTrendVC.xib in Resources */,
 				34A4E4B0231CD84B0041D405 /* Main.storyboard in Resources */,
+				34E2EA082327CD7700AD3534 /* LoginRegisterView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,8 +594,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				34A4E4AD231CD84B0041D405 /* ViewController.m in Sources */,
+				34E2EA062327CD5E00AD3534 /* LoginRegisterView.m in Sources */,
 				34CE17C4231FA31E009C2B3D /* UIBarButtonItem+Item.m in Sources */,
 				34CE17DD23260E1A009C2B3D /* SubTagTVC.m in Sources */,
+				34E2EA0223278AF000AD3534 /* LoginRegisterVC.m in Sources */,
 				34CE17B4231E4031009C2B3D /* UIImage+Image.m in Sources */,
 				34CE17CE231FCA6A009C2B3D /* SettingsVC.m in Sources */,
 				34CE17D52320B06E009C2B3D /* AdverseVC.m in Sources */,
