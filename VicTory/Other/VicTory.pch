@@ -13,6 +13,7 @@
  使用步骤：提前编译pch->build Settings->prefix header上填写.pch路径
  */
 #import "UIBarButtonItem+Item.h"
+#import "UIView+Frame.h"
 #define SCREEN_W [UIScreen mainScreen].bounds.size.width
 #define SCREEN_H [UIScreen mainScreen].bounds.size.height
 
