@@ -117,7 +117,10 @@
     CusNavigationController *nav4 = [[CusNavigationController alloc] initWithRootViewController:friendTrendVC];
     [self addChildViewController:nav4];
     
-    MeTVC *meTVC = [[MeTVC alloc] init];
+    //我
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:NSStringFromClass([MeTVC class]) bundle:nil];
+    //加载箭头指向的控制器（自己创建的stroyboard）
+    MeTVC *meTVC = [storyboard instantiateInitialViewController];
     CusNavigationController *nav5 = [[CusNavigationController alloc] initWithRootViewController:meTVC];
     [self addChildViewController:nav5];
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34476E5E2330769400D5FDAE /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34476E5C2330769400D5FDAE /* CollectionViewCell.m */; };
+		34476E5F2330769400D5FDAE /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34476E5D2330769400D5FDAE /* CollectionViewCell.xib */; };
+		34476E622330BB1E00D5FDAE /* SquareItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 34476E612330BB1E00D5FDAE /* SquareItem.m */; };
 		34A4E4AA231CD84B0041D405 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A4E4A9231CD84B0041D405 /* AppDelegate.m */; };
 		34A4E4AD231CD84B0041D405 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A4E4AC231CD84B0041D405 /* ViewController.m */; };
 		34A4E4B0231CD84B0041D405 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34A4E4AE231CD84B0041D405 /* Main.storyboard */; };
@@ -40,10 +43,18 @@
 		34E2EA0E2328C28700AD3534 /* FastLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E2EA0D2328C28700AD3534 /* FastLoginView.m */; };
 		34E2EA102328C29500AD3534 /* FastLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34E2EA0F2328C29500AD3534 /* FastLoginView.xib */; };
 		34E2EA132328D1F800AD3534 /* FastLoginBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E2EA122328D1F800AD3534 /* FastLoginBtn.m */; };
+		34E2EA16232906E800AD3534 /* LoginTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E2EA15232906E800AD3534 /* LoginTextField.m */; };
+		34E2EA192329122D00AD3534 /* UITextField+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E2EA182329122D00AD3534 /* UITextField+Placeholder.m */; };
+		34E2EA1B23291FD200AD3534 /* MeTVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34E2EA1A23291FD100AD3534 /* MeTVC.storyboard */; };
 		576C1ADD4021AE123850802F /* libPods-VicTory.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EDE3CF17FE6CBCBD6D3AFE9C /* libPods-VicTory.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		34476E5B2330769400D5FDAE /* CollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		34476E5C2330769400D5FDAE /* CollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		34476E5D2330769400D5FDAE /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		34476E602330BB1E00D5FDAE /* SquareItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SquareItem.h; sourceTree = "<group>"; };
+		34476E612330BB1E00D5FDAE /* SquareItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SquareItem.m; sourceTree = "<group>"; };
 		34A4E4A5231CD84B0041D405 /* VicTory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VicTory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34A4E4A8231CD84B0041D405 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		34A4E4A9231CD84B0041D405 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -103,6 +114,11 @@
 		34E2EA0F2328C29500AD3534 /* FastLoginView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FastLoginView.xib; sourceTree = "<group>"; };
 		34E2EA112328D1F800AD3534 /* FastLoginBtn.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FastLoginBtn.h; sourceTree = "<group>"; };
 		34E2EA122328D1F800AD3534 /* FastLoginBtn.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FastLoginBtn.m; sourceTree = "<group>"; };
+		34E2EA14232906E800AD3534 /* LoginTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginTextField.h; sourceTree = "<group>"; };
+		34E2EA15232906E800AD3534 /* LoginTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginTextField.m; sourceTree = "<group>"; };
+		34E2EA172329122D00AD3534 /* UITextField+Placeholder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextField+Placeholder.h"; sourceTree = "<group>"; };
+		34E2EA182329122D00AD3534 /* UITextField+Placeholder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Placeholder.m"; sourceTree = "<group>"; };
+		34E2EA1A23291FD100AD3534 /* MeTVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MeTVC.storyboard; sourceTree = "<group>"; };
 		37EFEB275D6DDE8865B9B674 /* Pods-VicTory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTory.debug.xcconfig"; path = "Target Support Files/Pods-VicTory/Pods-VicTory.debug.xcconfig"; sourceTree = "<group>"; };
 		3F459BD2C57A9D0379B7FB50 /* Pods-VicTory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VicTory.release.xcconfig"; path = "Target Support Files/Pods-VicTory/Pods-VicTory.release.xcconfig"; sourceTree = "<group>"; };
 		EDE3CF17FE6CBCBD6D3AFE9C /* libPods-VicTory.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VicTory.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -315,6 +331,8 @@
 				34E2EA0F2328C29500AD3534 /* FastLoginView.xib */,
 				34E2EA112328D1F800AD3534 /* FastLoginBtn.h */,
 				34E2EA122328D1F800AD3534 /* FastLoginBtn.m */,
+				34E2EA14232906E800AD3534 /* LoginTextField.h */,
+				34E2EA15232906E800AD3534 /* LoginTextField.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -334,6 +352,7 @@
 			children = (
 				34CE1795231D3699009C2B3D /* MeTVC.h */,
 				34CE1796231D3699009C2B3D /* MeTVC.m */,
+				34E2EA1A23291FD100AD3534 /* MeTVC.storyboard */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -341,6 +360,8 @@
 		34CE178F231D355C009C2B3D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				34476E602330BB1E00D5FDAE /* SquareItem.h */,
+				34476E612330BB1E00D5FDAE /* SquareItem.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -348,6 +369,9 @@
 		34CE1790231D355C009C2B3D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				34476E5B2330769400D5FDAE /* CollectionViewCell.h */,
+				34476E5C2330769400D5FDAE /* CollectionViewCell.m */,
+				34476E5D2330769400D5FDAE /* CollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -410,6 +434,8 @@
 				34CE17C3231FA31E009C2B3D /* UIBarButtonItem+Item.m */,
 				34E2EA092328B68D00AD3534 /* UIView+Frame.h */,
 				34E2EA0A2328B68D00AD3534 /* UIView+Frame.m */,
+				34E2EA172329122D00AD3534 /* UITextField+Placeholder.h */,
+				34E2EA182329122D00AD3534 /* UITextField+Placeholder.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -553,8 +579,10 @@
 			files = (
 				34D866C923261DD7002794B4 /* SubTagCell.xib in Resources */,
 				34A4E4B5231CD84C0041D405 /* LaunchScreen.storyboard in Resources */,
+				34476E5F2330769400D5FDAE /* CollectionViewCell.xib in Resources */,
 				34CE17D72320E317009C2B3D /* AdverseVC.xib in Resources */,
 				34A4E4B2231CD84C0041D405 /* Assets.xcassets in Resources */,
+				34E2EA1B23291FD200AD3534 /* MeTVC.storyboard in Resources */,
 				34E2EA0323278AF000AD3534 /* LoginRegisterVC.xib in Resources */,
 				34D866CB23277C21002794B4 /* FriendTrendVC.xib in Resources */,
 				34E2EA102328C29500AD3534 /* FastLoginView.xib in Resources */,
@@ -615,14 +643,17 @@
 				34A4E4AD231CD84B0041D405 /* ViewController.m in Sources */,
 				34E2EA062327CD5E00AD3534 /* LoginRegisterView.m in Sources */,
 				34CE17C4231FA31E009C2B3D /* UIBarButtonItem+Item.m in Sources */,
+				34476E622330BB1E00D5FDAE /* SquareItem.m in Sources */,
 				34CE17DD23260E1A009C2B3D /* SubTagTVC.m in Sources */,
 				34E2EA132328D1F800AD3534 /* FastLoginBtn.m in Sources */,
+				34E2EA192329122D00AD3534 /* UITextField+Placeholder.m in Sources */,
 				34E2EA0223278AF000AD3534 /* LoginRegisterVC.m in Sources */,
 				34CE17B4231E4031009C2B3D /* UIImage+Image.m in Sources */,
 				34CE17CE231FCA6A009C2B3D /* SettingsVC.m in Sources */,
 				34CE17D52320B06E009C2B3D /* AdverseVC.m in Sources */,
 				34CE1794231D3664009C2B3D /* HomeVC.m in Sources */,
 				34A4E4B8231CD84C0041D405 /* main.m in Sources */,
+				34476E5E2330769400D5FDAE /* CollectionViewCell.m in Sources */,
 				34E2EA0B2328B68D00AD3534 /* UIView+Frame.m in Sources */,
 				34CE17DA232238D3009C2B3D /* AdItem.m in Sources */,
 				34CE17B0231E3C36009C2B3D /* TabBarController.m in Sources */,
@@ -631,6 +662,7 @@
 				34E2EA0E2328C28700AD3534 /* FastLoginView.m in Sources */,
 				34CE179A231D36E1009C2B3D /* FriendTrendVC.m in Sources */,
 				34CE17A0231D374C009C2B3D /* NewVC.m in Sources */,
+				34E2EA16232906E800AD3534 /* LoginTextField.m in Sources */,
 				34CE17C7231FB94B009C2B3D /* CusNavigationController.m in Sources */,
 				34CE1797231D3699009C2B3D /* MeTVC.m in Sources */,
 				34CE17BA231E8DF1009C2B3D /* CusTabBar.m in Sources */,

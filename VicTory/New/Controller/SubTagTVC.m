@@ -97,7 +97,7 @@ static NSString * const ID = @"cell";
             
             [responseObject writeToFile:@"/Users/dylanchan/Desktop/VicTory/VicTory/New/tag.plist" atomically:YES];
             
-            NSLog(@"%@",responseObject);
+//            NSLog(@"%@",responseObject);
             //字典数组转换成模型数组
             _subTags = [SubTagItem mj_objectArrayWithKeyValuesArray:responseObject];
             

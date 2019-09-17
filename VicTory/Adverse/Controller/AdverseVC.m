@@ -82,7 +82,7 @@ TabBarController *tabBarVC = [[TabBarController alloc]init];
 
 -(void)timeChange
 {
-    NSLog(@"%s",__func__);
+//    NSLog(@"%s",__func__);
     static int i = 3;
     if (i == 0) {
         [self jumpBtnClick:nil];
@@ -119,8 +119,8 @@ TabBarController *tabBarVC = [[TabBarController alloc]init];
         //加载广告界面
         [self.adView sd_setImageWithURL:[NSURL URLWithString:_item.w_picurl]];
         
-        NSLog(@"%@",_item);
-        NSLog(@"%@",responseObject);
+//        NSLog(@"%@",_item);
+//        NSLog(@"%@",responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@",error);
     }];
