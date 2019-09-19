@@ -10,6 +10,13 @@
 		34476E5E2330769400D5FDAE /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34476E5C2330769400D5FDAE /* CollectionViewCell.m */; };
 		34476E5F2330769400D5FDAE /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34476E5D2330769400D5FDAE /* CollectionViewCell.xib */; };
 		34476E622330BB1E00D5FDAE /* SquareItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 34476E612330BB1E00D5FDAE /* SquareItem.m */; };
+		34797EEB233321D5007B23B3 /* CusTitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 34797EEA233321D5007B23B3 /* CusTitleButton.m */; };
+		34797EEE23337EA8007B23B3 /* OneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34797EED23337EA8007B23B3 /* OneVC.m */; };
+		34797EF123337EB6007B23B3 /* TwoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34797EF023337EB6007B23B3 /* TwoVC.m */; };
+		34797EF423337ECA007B23B3 /* ThreeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34797EF323337ECA007B23B3 /* ThreeVC.m */; };
+		34797EF723337EDD007B23B3 /* FourVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34797EF623337EDD007B23B3 /* FourVC.m */; };
+		34797EFA23337EEB007B23B3 /* FiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34797EF923337EEB007B23B3 /* FiveVC.m */; };
+		34797EFD2333B331007B23B3 /* CusConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 34797EFC2333B331007B23B3 /* CusConst.m */; };
 		34A4E4AA231CD84B0041D405 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A4E4A9231CD84B0041D405 /* AppDelegate.m */; };
 		34A4E4AD231CD84B0041D405 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A4E4AC231CD84B0041D405 /* ViewController.m */; };
 		34A4E4B0231CD84B0041D405 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34A4E4AE231CD84B0041D405 /* Main.storyboard */; };
@@ -55,6 +62,20 @@
 		34476E5D2330769400D5FDAE /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		34476E602330BB1E00D5FDAE /* SquareItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SquareItem.h; sourceTree = "<group>"; };
 		34476E612330BB1E00D5FDAE /* SquareItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SquareItem.m; sourceTree = "<group>"; };
+		34797EE9233321D5007B23B3 /* CusTitleButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CusTitleButton.h; sourceTree = "<group>"; };
+		34797EEA233321D5007B23B3 /* CusTitleButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CusTitleButton.m; sourceTree = "<group>"; };
+		34797EEC23337EA8007B23B3 /* OneVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OneVC.h; sourceTree = "<group>"; };
+		34797EED23337EA8007B23B3 /* OneVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneVC.m; sourceTree = "<group>"; };
+		34797EEF23337EB6007B23B3 /* TwoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TwoVC.h; sourceTree = "<group>"; };
+		34797EF023337EB6007B23B3 /* TwoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwoVC.m; sourceTree = "<group>"; };
+		34797EF223337ECA007B23B3 /* ThreeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThreeVC.h; sourceTree = "<group>"; };
+		34797EF323337ECA007B23B3 /* ThreeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThreeVC.m; sourceTree = "<group>"; };
+		34797EF523337EDD007B23B3 /* FourVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FourVC.h; sourceTree = "<group>"; };
+		34797EF623337EDD007B23B3 /* FourVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FourVC.m; sourceTree = "<group>"; };
+		34797EF823337EEB007B23B3 /* FiveVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FiveVC.h; sourceTree = "<group>"; };
+		34797EF923337EEB007B23B3 /* FiveVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FiveVC.m; sourceTree = "<group>"; };
+		34797EFB2333B331007B23B3 /* CusConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CusConst.h; sourceTree = "<group>"; };
+		34797EFC2333B331007B23B3 /* CusConst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CusConst.m; sourceTree = "<group>"; };
 		34A4E4A5231CD84B0041D405 /* VicTory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VicTory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34A4E4A8231CD84B0041D405 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		34A4E4A9231CD84B0041D405 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -187,9 +208,9 @@
 		34CE1771231D33EE009C2B3D /* Essence */ = {
 			isa = PBXGroup;
 			children = (
-				34CE1774231D3442009C2B3D /* View */,
-				34CE1773231D343B009C2B3D /* Model */,
 				34CE1772231D3429009C2B3D /* Controller */,
+				34CE1773231D343B009C2B3D /* Model */,
+				34CE1774231D3442009C2B3D /* View */,
 			);
 			path = Essence;
 			sourceTree = "<group>";
@@ -199,6 +220,16 @@
 			children = (
 				34CE1792231D3664009C2B3D /* HomeVC.h */,
 				34CE1793231D3664009C2B3D /* HomeVC.m */,
+				34797EEC23337EA8007B23B3 /* OneVC.h */,
+				34797EED23337EA8007B23B3 /* OneVC.m */,
+				34797EEF23337EB6007B23B3 /* TwoVC.h */,
+				34797EF023337EB6007B23B3 /* TwoVC.m */,
+				34797EF223337ECA007B23B3 /* ThreeVC.h */,
+				34797EF323337ECA007B23B3 /* ThreeVC.m */,
+				34797EF523337EDD007B23B3 /* FourVC.h */,
+				34797EF623337EDD007B23B3 /* FourVC.m */,
+				34797EF823337EEB007B23B3 /* FiveVC.h */,
+				34797EF923337EEB007B23B3 /* FiveVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -213,6 +244,8 @@
 		34CE1774231D3442009C2B3D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				34797EE9233321D5007B23B3 /* CusTitleButton.h */,
+				34797EEA233321D5007B23B3 /* CusTitleButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -384,6 +417,8 @@
 				34A4E4A9231CD84B0041D405 /* AppDelegate.m */,
 				34A4E4B7231CD84C0041D405 /* main.m */,
 				34CE17BB231F9296009C2B3D /* VicTory.pch */,
+				34797EFB2333B331007B23B3 /* CusConst.h */,
+				34797EFC2333B331007B23B3 /* CusConst.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -656,17 +691,24 @@
 				34476E5E2330769400D5FDAE /* CollectionViewCell.m in Sources */,
 				34E2EA0B2328B68D00AD3534 /* UIView+Frame.m in Sources */,
 				34CE17DA232238D3009C2B3D /* AdItem.m in Sources */,
+				34797EFA23337EEB007B23B3 /* FiveVC.m in Sources */,
+				34797EEB233321D5007B23B3 /* CusTitleButton.m in Sources */,
 				34CE17B0231E3C36009C2B3D /* TabBarController.m in Sources */,
 				34A4E4AA231CD84B0041D405 /* AppDelegate.m in Sources */,
 				34D866C823261DD7002794B4 /* SubTagCell.m in Sources */,
 				34E2EA0E2328C28700AD3534 /* FastLoginView.m in Sources */,
+				34797EF423337ECA007B23B3 /* ThreeVC.m in Sources */,
+				34797EEE23337EA8007B23B3 /* OneVC.m in Sources */,
 				34CE179A231D36E1009C2B3D /* FriendTrendVC.m in Sources */,
 				34CE17A0231D374C009C2B3D /* NewVC.m in Sources */,
 				34E2EA16232906E800AD3534 /* LoginTextField.m in Sources */,
 				34CE17C7231FB94B009C2B3D /* CusNavigationController.m in Sources */,
 				34CE1797231D3699009C2B3D /* MeTVC.m in Sources */,
+				34797EFD2333B331007B23B3 /* CusConst.m in Sources */,
 				34CE17BA231E8DF1009C2B3D /* CusTabBar.m in Sources */,
 				34CE17E0232613D1009C2B3D /* SubTagItem.m in Sources */,
+				34797EF723337EDD007B23B3 /* FourVC.m in Sources */,
+				34797EF123337EB6007B23B3 /* TwoVC.m in Sources */,
 				34CE179D231D36F5009C2B3D /* PublishVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -818,6 +860,26 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"MJExtension\"",
+					"-l\"SDWebImage\"",
+					"-l\"SVProgressHUD\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cp.VicTory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -836,6 +898,26 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"MJExtension\"",
+					"-l\"SDWebImage\"",
+					"-l\"SVProgressHUD\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cp.VicTory;
 				PRODUCT_NAME = "$(TARGET_NAME)";

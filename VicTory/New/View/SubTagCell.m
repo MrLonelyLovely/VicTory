@@ -31,6 +31,7 @@
     
     _nameLbl.text = item.theme_name;
     
+//    NSLog(@"%@",[item.image_list class]);
     [self handleNum];
     //设置占位图
     [_iconView sd_setImageWithURL:[NSURL URLWithString:item.image_list] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];

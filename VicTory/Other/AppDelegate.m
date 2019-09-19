@@ -13,7 +13,7 @@
  */
 #import "AppDelegate.h"
 
-//#import "TabBarController.h"
+#import "TabBarController.h"
 #import "AdverseVC.h"
 
 @interface AppDelegate ()
@@ -28,10 +28,12 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
 //    2.设置窗口根控制器
-//    TabBarController *tabBarVC = [[TabBarController alloc] init];
+    TabBarController *tabBarVC = [[TabBarController alloc] init];
+    self.window.rootViewController = tabBarVC;
     //init -> initWithNibName 1.首先判断有没有指定nibName 2.判断有没有跟类名同名xib
-    AdverseVC *adVC = [[AdverseVC alloc] init];
-    self.window.rootViewController = adVC;
+    
+//    AdverseVC *adVC = [[AdverseVC alloc] init];
+//    self.window.rootViewController = adVC;
     
     //2.1 添加子控制器
     
