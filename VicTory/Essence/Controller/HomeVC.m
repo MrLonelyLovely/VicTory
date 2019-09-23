@@ -14,7 +14,8 @@
 #import "FourVC.h"
 #import "FiveVC.h"
 
-@interface HomeVC ()
+@interface HomeVC () <UIScrollViewDelegate>
+@property (nonatomic, weak) UIScrollView *scrollView;
 @property (nonatomic, weak) UIView *titlesView;
 @property (nonatomic, weak) UIView *titleUnderLine;
 @property (nonatomic, weak) CusTitleButton *previousTitleBtnClicked;
@@ -33,7 +34,7 @@
     
     [self setupTitlesView];
     
-    
+    [self addChildVcIntoScrollView:0];
     
 }
 
@@ -70,14 +71,19 @@
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.backgroundColor = [UIColor greenColor];
     scrollView.frame = self.view.bounds;
+    
+    scrollView.delegate = self;
+    
     //不允许自动修改UIScrollView的内边距
     scrollView.contentInsetAdjustmentBehavior = NO;
     
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.pagingEnabled = YES;
+    scrollView.scrollsToTop = NO;   //点击状态栏时，scrollView不会滚动到顶部
     [self.view addSubview:scrollView];
     
+    self.scrollView = scrollView;
 //    for (NSInteger i = 0; i < 5; i++) {
 //        UITableView *tableView = [[UITableView alloc] init];
 //        tableView.cusWidth = scrollView.cusWidth;
@@ -90,18 +96,18 @@
     
     NSInteger count = self.childViewControllers.count;
     CGFloat scrollViewW = scrollView.cusWidth;
-    CGFloat scrollViewH = scrollView.cusHeight;
-    
-    for (NSInteger i=0; i<count; i++) {
-        UIView *childVCView = self.childViewControllers[i].view;
-        childVCView.frame = CGRectMake(i * scrollViewW, -88, scrollViewW, scrollViewH);
-        [scrollView addSubview:childVCView];
-    }
+//    CGFloat scrollViewH = scrollView.cusHeight;
+//
+//    for (NSInteger i=0; i<count; i++) {
+//        UIView *childVCView = self.childViewControllers[i].view;
+//        childVCView.frame = CGRectMake(i * scrollViewW, -88, scrollViewW, scrollViewH);
+//        [scrollView addSubview:childVCView];
+//    }
     
     scrollView.contentSize = CGSizeMake(count * scrollViewW, 0);
     
-    NSLog(@"%@",NSStringFromCGRect([[UIViewController alloc] init].view.frame));
-    NSLog(@"%@",NSStringFromCGRect([[UITableViewController alloc] init].view.frame));
+//    NSLog(@"%@",NSStringFromCGRect([[UIViewController alloc] init].view.frame));
+//    NSLog(@"%@",NSStringFromCGRect([[UITableViewController alloc] init].view.frame));
 }
 
 - (void)setupTitlesView
@@ -128,6 +134,7 @@
     
     for (NSInteger i = 0; i < count; i++) {
         CusTitleButton *titleBtn = [[CusTitleButton alloc] init];
+        titleBtn.tag = i;
         [titleBtn addTarget:self action:@selector(titleBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.titlesView addSubview:titleBtn];
         titleBtn.frame = CGRectMake(i * (SCREEN_W / 5), 0, SCREEN_W / 5, self.titlesView.cusHeight);
@@ -167,15 +174,44 @@
     titleBtn.selected = YES;
     self.previousTitleBtnClicked = titleBtn;
     
-    [UIView animateWithDuration:0.1 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
 //        self.titleUnderLine.cusWidth = [titleBtn.currentTitle sizeWithFont:titleBtn.titleLabel.font].width;
 //        self.titleUnderLine.cusWidth = [titleBtn.currentTitle sizeWithAttributes:@{NSFontAttributeName : titleBtn.titleLabel.font}].width;
+        //处理下划线的滚动
         self.titleUnderLine.cusWidth = titleBtn.titleLabel.cusWidth + 10;
         self.titleUnderLine.cusCenterX = titleBtn.cusCenterX;
+        
+//        NSInteger index = [self.titlesView.subviews indexOfObject:titleBtn];
+//        NSLog(@"%ld",(long)index);
+//        CGFloat offsetX = self.scrollView.cusWidth * index;
+
+        CGFloat offsetX = self.scrollView.cusWidth * titleBtn.tag;
+//        NSLog(@"%ld",(long)titleBtn.tag);
+        //通过确定点标来确定偏移量
+#warning bug - cell显示有bug
+        self.scrollView.contentOffset = CGPointMake(offsetX, self.scrollView.contentOffset.y);
+    } completion:^(BOOL finished) {
+        
+        [self addChildVcIntoScrollView:titleBtn.tag];
+        /*
+        //添加子控制器的view
+        UIView *childView = self.childViewControllers[titleBtn.tag].view;
+        childView.frame = CGRectMake(titleBtn.tag * self.scrollView.cusWidth, -88, self.scrollView.cusWidth, self.scrollView.cusHeight);
+        [self.scrollView addSubview:childView];
+         */
     }];
+    
+    //设置index对应位置的tableView.scrollsToTop = YES，其他都设置为NO
+    for (NSInteger i=0; i<self.childViewControllers.count; i++) {
+        UIViewController *childVC = self.childViewControllers[i];
+        //如果view还没有被创建，就不用去处理
+        if(!childVC.isViewLoaded) continue;
+        
+        UIScrollView *scrollView = (UIScrollView *)childVC.view;
+        if(![scrollView isKindOfClass:[UIScrollView class]]) continue;
+        scrollView.scrollsToTop = (i == titleBtn.tag);
+    }
 }
-
-
 
 /*
 - (void)titleBtnClick:(CusTitleButton *)titleBtn
@@ -188,6 +224,37 @@
 - (void)clickGame
 {
     NSLog(@"%s",__func__);
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    //求出标题按钮的索引
+    NSInteger index = scrollView.contentOffset.x / scrollView.cusWidth;
+    
+    //点击对应的标题按钮
+    CusTitleButton *titleBtn = self.titlesView.subviews[index];
+//    CusTitleButton *titleBtn = [self.titlesView viewWithTag:index];  //这个会报错
+    [self titleBtnClick:titleBtn];
+}
+
+#pragma mark - other functions
+
+-(void)addChildVcIntoScrollView:(NSInteger)index
+{
+    UIViewController *childVC = self.childViewControllers[index];
+    if(childVC.isViewLoaded) return;
+    
+    //取出index位置对应的子控制器view
+    UIView *childVCView = childVC.view;
+//    if(childVCView.superview) return;
+//    if(childVCView.window) return;
+    
+    //设置子控制器view的frame
+    CGFloat scrollViewW = self.scrollView.cusWidth;
+    childVCView.frame = CGRectMake(index * self.scrollView.cusWidth, -88, self.scrollView.cusWidth, self.scrollView.cusHeight);
+    //添加子控制器的view到scrollView中
+    [self.scrollView addSubview:childVCView];
 }
 /*
 #pragma mark - Navigation
