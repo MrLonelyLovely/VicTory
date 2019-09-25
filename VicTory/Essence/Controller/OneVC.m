@@ -10,9 +10,16 @@
 
 @interface OneVC ()
 @property (nonatomic, assign) NSInteger dataCount;
+
+@property (nonatomic, weak) UIView *header;         //上拉刷新控件
+@property (nonatomic, weak) UILabel *headerLbl;     //上拉刷新文字
+@property (nonatomic, assign, getter=isHeaderRefreshing) BOOL headerRefreshing;  //下拉刷新控件是否正在刷新
+
 @property (nonatomic, weak) UIView *footer;
 @property (nonatomic, weak) UILabel *footerLbl;
-@property (nonatomic, assign, getter=isfooterRefreshing) BOOL footerRefreshing;
+@property (nonatomic, assign, getter=isFooterRefreshing) BOOL footerRefreshing;
+
+
 
 @end
 
@@ -21,13 +28,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.dataCount = 30;
+//    self.dataCount = 5;
     
     self.view.backgroundColor = RandomColor;
     
     //对于iPhone xs/x
 //    self.tableView.contentInset = UIEdgeInsetsMake(88, 0, 83, 0);
-    self.tableView.contentInset = UIEdgeInsetsMake(CusNavH, 0, CusTabBarH, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(CusNavH + CusTitlesViewH, 0, CusTabBarH, 0);
+//    NSLog(@"%f",CusNavH + CusTitlesViewH);
     //设置滚动条与显示的cell一致，避免也跟着cell穿透
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     
@@ -46,6 +54,27 @@
 //上拉刷新加载更多
 - (void)setupRefresh
 {
+    //header
+    UIView *header = [[UIView alloc] init];
+    header.frame = CGRectMake(0, -35, self.tableView.cusWidth, 35);
+    self.header = header;
+    [self.tableView addSubview:header];
+    
+    UILabel *headerLbl = [[UILabel alloc] init];
+    headerLbl.frame = header.bounds;
+    headerLbl.backgroundColor = [UIColor redColor];
+    headerLbl.text = @"下拉刷新";
+    headerLbl.textColor = [UIColor whiteColor];
+    headerLbl.textAlignment = NSTextAlignmentCenter;
+    [header addSubview:headerLbl];
+    self.headerLbl = headerLbl;
+    
+    //让header 自动刷新（一次）
+    [self headerBeginRefreshing];
+    
+//    self.tableView.tableHeaderView = header;
+    
+    //footer
     UIView *footer = [[UIView alloc] init];
     footer.frame = CGRectMake(0, 0, self.tableView.cusWidth, 30);
     self.footer = footer;
@@ -72,7 +101,8 @@
     //如果显示的不是 全部 对应的界面，则直接返回
     if(self.tableView.scrollsToTop == NO) return;
     
-    NSLog(@"%s",__func__);
+//    NSLog(@"%s",__func__);
+    [self headerBeginRefreshing];
 }
 
 //监听titleBtn的重复点击
@@ -108,37 +138,157 @@
 #pragma mark - delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+//    NSLog(@"%f",self.tableView.contentOffset.y);
+    //处理header的操作
+    [self handleHeader];
+    
+    //处理footer的操作
+    [self handleFooter];
+}
+
+//（拖到合适的位置，）用户松开scrollView时调用该方法
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    //如果正在下拉刷新，则直接返回 (避免修改的内边距不断增大)
+    if(self.isHeaderRefreshing) return;
+    
+    //下拉时偏移量为负数
+    CGFloat offsetY = - (self.tableView.contentInset.top + self.header.cusHeight);
+    if (self.tableView.contentOffset.y <= offsetY) {
+//        CusLogFunc;
+        [self headerBeginRefreshing];
+    }
+}
+-(void)handleHeader
+{
+    //如果正在下拉刷新，则直接返回
+    if(self.isHeaderRefreshing) return;
+    
+    CGFloat offsetY = - (self.tableView.contentInset.top + self.header.cusHeight);
+    if (self.tableView.contentOffset.y <= offsetY) {  //header已经完全出现
+        self.headerLbl.text = @"松开立即刷新";
+        self.headerLbl.backgroundColor = [UIColor grayColor];
+    } else {
+        self.headerLbl.text = @"下拉刷新";
+        self.headerLbl.backgroundColor = [UIColor redColor];
+    }
+}
+
+-(void)handleFooter
+{
     //还没有任何内容时，不需要判断
     if(self.tableView.contentSize.height == 0) return;
     
     //如果正在刷新，直接返回（避免多次刷新，发送请求数据操作）
-    if(self.isfooterRefreshing) return;
+    if(self.isFooterRefreshing) return;
     
     //当tableView的偏移量y值 >= offsetY时，代表footer已经完全出现
     CGFloat offsetY = self.tableView.contentSize.height + self.tableView.contentInset.bottom - self.tableView.cusHeight;
     
-    if (self.tableView.contentOffset.y >= offsetY) {
+    //&& self.tableView.contentOffset.y > -123
+    if (self.tableView.contentOffset.y >= offsetY && self.tableView.contentOffset.y > -123) {
+        //footer完全出现 且 是往上拽的时候
         //进入刷新状态（操作）
-        self.footerRefreshing = YES;
-        self.footerLbl.text = @"正在刷新";
-        self.footerLbl.backgroundColor = [UIColor blueColor];
-        
-        //发送请求给服务器
-        NSLog(@"发送请求给服务器 - 加载更多数据");
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            //服务器请求回来了
-            self.dataCount += 5;
-            [self.tableView reloadData];
-            
-            //结束刷新
-            self.footerRefreshing = NO;
-            self.footerLbl.text = @"上拉刷新";
-            self.footerLbl.backgroundColor = [UIColor redColor];
-        });
+        [self footerBeginRefreshing];
     }
 }
 
+#pragma mark - header
+-(void)headerBeginRefreshing
+{
+    //如果正在下拉刷新，则直接返回
+    if(self.isHeaderRefreshing) return;
+    
+    //进入下拉刷新状态
+    self.headerLbl.text = @"正在刷新...";
+    self.headerLbl.backgroundColor = [UIColor blueColor];
+    self.headerRefreshing = YES;
+    //增加内边距
+    [UIView animateWithDuration:0.25 animations:^{
+        UIEdgeInsets inset = self.tableView.contentInset;
+        inset.top += self.header.cusHeight;
+        self.tableView.contentInset = inset;
+        
+#warning question 1
+        //修改偏移量 ？？？
+        self.tableView.contentOffset = CGPointMake(self.tableView.contentOffset.x, - inset.top);
+    }];
+    
+    [self loadNewData];
+}
+
+//结束刷新
+-(void)headerEndRefreshing
+{
+    //1.标志状态要改为NO
+    //2.减少内边距
+    //3.将文字还原 这一步可以不用写
+    //1.
+    self.headerRefreshing = NO;
+    
+    //2.
+    [UIView animateWithDuration:0.25 animations:^{
+        UIEdgeInsets inset = self.tableView.contentInset;
+        inset.top -= self.header.cusHeight;
+        self.tableView.contentInset = inset;
+    }];
+    
+    //3.
+    //            self.headerLbl.text = @"下拉刷新";
+    //            self.headerLbl.backgroundColor = [UIColor redColor];
+}
+
+#pragma mark - footer
+//进入刷新状态
+-(void)footerBeginRefreshing
+{
+    //如果正在上拉刷新，直接返回（避免多次刷新，发送请求数据操作）
+    if(self.isFooterRefreshing) return;
+    
+    self.footerRefreshing = YES;
+    self.footerLbl.text = @"正在刷新";
+    self.footerLbl.backgroundColor = [UIColor blueColor];
+    
+    //发送请求给服务器
+    [self loadMoreData];
+}
+
+-(void)footerEndRefreshing
+{
+    self.footerRefreshing = NO;
+    self.footerLbl.text = @"上拉刷新";
+    self.footerLbl.backgroundColor = [UIColor redColor];
+}
+
+#pragma mark - 刷新数据处理
+//发送请求给服务器，下拉刷新数据
+-(void)loadNewData
+{
+    NSLog(@"发送请求给服务器，下拉刷新数据");
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //服务器的数据回来了
+        self.dataCount = 20;
+        [self.tableView reloadData];
+        
+        //结束刷新
+        [self headerEndRefreshing];
+    });
+}
+
+//发送请求给服务器，上拉加载更多数据
+-(void)loadMoreData
+{
+    NSLog(@"发送请求给服务器 - 加载更多数据");
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //服务器请求回来了
+        self.dataCount += 5;
+        [self.tableView reloadData];
+        
+        //结束刷新
+        [self footerEndRefreshing];
+    });
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

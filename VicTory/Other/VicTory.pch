@@ -26,6 +26,7 @@
 #ifdef DEBUG  //调试阶段
 
 #define CusLog(...) NSLog(__VA_ARGS__)
+#define CusLogFunc NSLog(@"%s",__func__)
 
 #else  //发布阶段
 

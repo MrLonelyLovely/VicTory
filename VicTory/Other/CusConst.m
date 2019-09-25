@@ -7,7 +7,7 @@ CGFloat const CusTabBarH = 83;
 CGFloat const CusNavH = 88;
 
 //标题栏的高度
-CGFloat const CusTitleViewH = 35;
+CGFloat const CusTitlesViewH = 35;
 
 //TabBarBtn被重复点击的通知
 NSString * const CusTabBarBtnDidClickAgainNotification = @"CusTabBarBtnDidClickAgainNotification";
