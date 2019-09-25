@@ -167,9 +167,14 @@
 }
 
 #pragma mark - btn selector
-
+//点击标题按钮
 - (void)titleBtnClick:(CusTitleButton *)titleBtn
 {
+    //处理重复点击标题按钮进行刷新对应界面
+    if (self.previousTitleBtnClicked == titleBtn) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:CusTitlerBtnDidClickAgainNotification object:nil];
+    }
+    
     self.previousTitleBtnClicked.selected = NO;
     titleBtn.selected = YES;
     self.previousTitleBtnClicked = titleBtn;

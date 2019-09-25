@@ -14,7 +14,7 @@
 @interface CusTabBar ()
 
 @property (nonatomic,weak) UIButton *plusButton;
-
+@property (nonatomic,weak) UIControl *previousClickedTabBarBtn;
 @end
 
 @implementation CusTabBar
@@ -46,18 +46,40 @@
     NSInteger i = 0;
     //布局tabBarButton
 //    NSLog(@"%@",self.subviews);
-    for (UIView *tabBarButton in self.subviews) {
+    for (UIControl *tabBarButton in self.subviews) {
         if ([tabBarButton isKindOfClass:NSClassFromString(@"UITabBarButton")]) {
 //            NSLog(@"%@",tabBarButton);
+            
+            //初始化第一个按钮
+            if (i == 0 && self.previousClickedTabBarBtn == nil)
+                self.previousClickedTabBarBtn = tabBarButton;
+            
             if(i == 2) {
                 i += 1;
             }
             btnX = i * btnW;
             tabBarButton.frame = CGRectMake(btnX, 0, btnW, BTN_TABBAR_BUTTON_H);
             i++;
+//            NSLog(@"%@",tabBarButton.superclass);
+            
+            //监听点击
+            [tabBarButton addTarget:self action:@selector(tabBarBtnClick:) forControlEvents:UIControlEventTouchUpInside];
         }
     }
     self.plusButton.center = CGPointMake(self.frame.size.width/2, BTN_TABBAR_BUTTON_H/2);
+}
+
+//处理重复点击tabBarBtn的操作
+-(void)tabBarBtnClick:(UIControl *)tabBarBtn
+{
+    
+    if(self.previousClickedTabBarBtn == tabBarBtn) {
+//        NSLog(@"%s",__func__);
+        //发出通知，告知外界tabBarButton被重复点击了
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:CusTabBarBtnDidClickAgainNotification object:nil];
+    }
+    self.previousClickedTabBarBtn = tabBarBtn;
 }
 /*
 // Only override drawRect: if you perform custom drawing.
