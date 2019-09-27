@@ -7,9 +7,18 @@
 //
 
 #import "OneVC.h"
+#import <AFNetworking/AFNetworking.h>
+#import <MJExtension/MJExtension.h>
+#import "Post.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @interface OneVC ()
+
 @property (nonatomic, assign) NSInteger dataCount;
+@property (nonatomic, strong) NSMutableArray *posts;
+//@property (nonatomic, assign) NSUInteger page;
+//当前最后一条帖子数据的描述信息，用于加载下一页的数据（更早的数据）
+@property (nonatomic, copy) NSString *maxtime;
 
 @property (nonatomic, weak) UIView *header;         //上拉刷新控件
 @property (nonatomic, weak) UILabel *headerLbl;     //上拉刷新文字
@@ -18,8 +27,6 @@
 @property (nonatomic, weak) UIView *footer;
 @property (nonatomic, weak) UILabel *footerLbl;
 @property (nonatomic, assign, getter=isFooterRefreshing) BOOL footerRefreshing;
-
-
 
 @end
 
@@ -110,6 +117,7 @@
 {
     [self tabBarBtnDidClickedAgain];
 }
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -117,8 +125,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    self.footer.hidden = (_dataCount == 0);
-    return self.dataCount;
+    self.footer.hidden = (self.posts.count == 0);
+    return self.posts.count;
 }
 
 
@@ -126,16 +134,21 @@
     static NSString *ID = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
         cell.backgroundColor = [UIColor clearColor];
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@-%zd",self.class, indexPath.row];
+    Post *post = self.posts[indexPath.row];
+    cell.textLabel.text = post.name;
+    cell.detailTextLabel.text = post.text;
+    
+//    cell.textLabel.text = [NSString stringWithFormat:@"%@-%zd",self.class, indexPath.row];
     
     return cell;
 }
 
 #pragma mark - delegate
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
 //    NSLog(@"%f",self.tableView.contentOffset.y);
@@ -214,7 +227,7 @@
         self.tableView.contentOffset = CGPointMake(self.tableView.contentOffset.x, - inset.top);
     }];
     
-    [self loadNewData];
+    [self loadNewPosts];
 }
 
 //结束刷新
@@ -250,7 +263,7 @@
     self.footerLbl.backgroundColor = [UIColor blueColor];
     
     //发送请求给服务器
-    [self loadMoreData];
+    [self loadMorePosts];
 }
 
 -(void)footerEndRefreshing
@@ -262,75 +275,95 @@
 
 #pragma mark - 刷新数据处理
 //发送请求给服务器，下拉刷新数据
--(void)loadNewData
+-(void)loadNewPosts
 {
-    NSLog(@"发送请求给服务器，下拉刷新数据");
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        //服务器的数据回来了
-        self.dataCount = 20;
-        [self.tableView reloadData];
+    //发送请求给服务器，下拉刷新数据
+    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+    
+    NSMutableDictionary *para = [NSMutableDictionary dictionary];
+    para[@"a"] = @"list";
+    para[@"c"] = @"data";
+    para[@"type"] = @"1";
+    
+    [mgr GET:CusCommonURL parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id   _Nullable responseObject) {
+//        NSLog(@"请求成功 - %@", responseObject);
+        [responseObject writeToFile:@"/Users/dylanchan/Desktop/VicTory/VicTory/Essence/newPosts.plist" atomically:YES];
         
+        //存储maxtime
+        self.maxtime = responseObject[@"info"][@"maxtime"];
+        
+        //字典数组 -> 模型数组
+        self.posts = [Post mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        //刷新表格
+        [self.tableView reloadData];
         //结束刷新
         [self headerEndRefreshing];
-    });
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        NSLog(@"请求失败 - %@", error);
+        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试！"];
+        //结束刷新
+        [self headerEndRefreshing];
+    }];
+    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        //服务器的数据回来了
+//        self.dataCount = 20;
+//        [self.tableView reloadData];
+//
+//        //结束刷新
+//        [self headerEndRefreshing];
+//    });
 }
 
 //发送请求给服务器，上拉加载更多数据
--(void)loadMoreData
+-(void)loadMorePosts
 {
-    NSLog(@"发送请求给服务器 - 加载更多数据");
+    //发送请求给服务器 - 加载更多数据
+    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        //服务器请求回来了
-        self.dataCount += 5;
-        [self.tableView reloadData];
+    NSMutableDictionary *para = [NSMutableDictionary dictionary];
+    para[@"a"] = @"list";
+    para[@"c"] = @"data";
+    para[@"type"] = @"1";
+    para[@"maxtime"] = self.maxtime;
+    
+//    para[@"page"] = @(self.page + 1);
+    
+    [mgr GET:CusCommonURL parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id   _Nullable responseObject) {
+        //NSLog(@"请求成功 - %@", responseObject);
+        [responseObject writeToFile:@"/Users/dylanchan/Desktop/VicTory/VicTory/Essence/morePosts.plist" atomically:YES];
         
+        //更新maxtime
+        self.maxtime = responseObject[@"info"][@"maxtime"];
+        
+        //字典数组 -> 模型数组
+        NSArray *morePosts = [Post mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        //累加
+        [self.posts addObjectsFromArray:morePosts];
+        
+        //刷新表格
+        [self.tableView reloadData];
         //结束刷新
         [self footerEndRefreshing];
-    });
+        
+//        self.page = [para[@"page"] integerValue];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        //NSLog(@"请求失败 - %@", error);
+        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试！"];
+        //结束刷新
+        [self footerEndRefreshing];
+    }];
+    
+//    NSLog(@"发送请求给服务器 - 加载更多数据");
+//
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        //服务器请求回来了
+//        self.dataCount += 5;
+//        [self.tableView reloadData];
+//
+//        //结束刷新
+//        [self footerEndRefreshing];
+//    });
 }
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

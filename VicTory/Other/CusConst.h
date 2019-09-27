@@ -14,3 +14,6 @@ UIKIT_EXTERN NSString * const CusTabBarBtnDidClickAgainNotification;
 
 //TitleBtn被重复点击的通知
 UIKIT_EXTERN NSString * const CusTitlerBtnDidClickAgainNotification;
+
+//请求URL
+UIKIT_EXTERN NSString * const CusCommonURL;

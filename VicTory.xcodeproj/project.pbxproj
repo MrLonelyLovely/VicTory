@@ -17,6 +17,7 @@
 		34797EF723337EDD007B23B3 /* FourVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34797EF623337EDD007B23B3 /* FourVC.m */; };
 		34797EFA23337EEB007B23B3 /* FiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 34797EF923337EEB007B23B3 /* FiveVC.m */; };
 		34797EFD2333B331007B23B3 /* CusConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 34797EFC2333B331007B23B3 /* CusConst.m */; };
+		34A3DEA2233DE78F00CA5A6A /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A3DEA1233DE78F00CA5A6A /* Post.m */; };
 		34A4E4AA231CD84B0041D405 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A4E4A9231CD84B0041D405 /* AppDelegate.m */; };
 		34A4E4AD231CD84B0041D405 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A4E4AC231CD84B0041D405 /* ViewController.m */; };
 		34A4E4B0231CD84B0041D405 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34A4E4AE231CD84B0041D405 /* Main.storyboard */; };
@@ -76,6 +77,8 @@
 		34797EF923337EEB007B23B3 /* FiveVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FiveVC.m; sourceTree = "<group>"; };
 		34797EFB2333B331007B23B3 /* CusConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CusConst.h; sourceTree = "<group>"; };
 		34797EFC2333B331007B23B3 /* CusConst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CusConst.m; sourceTree = "<group>"; };
+		34A3DEA0233DE78F00CA5A6A /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		34A3DEA1233DE78F00CA5A6A /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		34A4E4A5231CD84B0041D405 /* VicTory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VicTory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34A4E4A8231CD84B0041D405 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		34A4E4A9231CD84B0041D405 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -237,6 +240,8 @@
 		34CE1773231D343B009C2B3D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				34A3DEA0233DE78F00CA5A6A /* Post.h */,
+				34A3DEA1233DE78F00CA5A6A /* Post.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -706,6 +711,7 @@
 				34CE1797231D3699009C2B3D /* MeTVC.m in Sources */,
 				34797EFD2333B331007B23B3 /* CusConst.m in Sources */,
 				34CE17BA231E8DF1009C2B3D /* CusTabBar.m in Sources */,
+				34A3DEA2233DE78F00CA5A6A /* Post.m in Sources */,
 				34CE17E0232613D1009C2B3D /* SubTagItem.m in Sources */,
 				34797EF723337EDD007B23B3 /* FourVC.m in Sources */,
 				34797EF123337EB6007B23B3 /* TwoVC.m in Sources */,
