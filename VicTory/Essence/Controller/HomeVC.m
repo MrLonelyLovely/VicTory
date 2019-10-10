@@ -48,6 +48,7 @@
     [self addChildViewController:[[FiveVC alloc] init]];
 
 }
+
 - (void)setupNavBar
 {
     
@@ -168,44 +169,54 @@
 
 #pragma mark - btn selector
 //点击标题按钮
-- (void)titleBtnClick:(CusTitleButton *)titleBtn
+- (IBAction)titleBtnClick:(CusTitleButton *)titleBtn
 {
     //处理重复点击标题按钮进行刷新对应界面
+#warning bug found - 点击cell，自动调用了titleBtnClick方法  found:2019-10-10 but not handled
     if (self.previousTitleBtnClicked == titleBtn) {
         [[NSNotificationCenter defaultCenter] postNotificationName:CusTitlerBtnDidClickAgainNotification object:nil];
     }
     
+    [self dealTitleBtnClick:titleBtn];
+}
+
+//处理标题按钮点击
+-(void)dealTitleBtnClick:(CusTitleButton *)titleBtn
+{
+    //切换按钮状态
     self.previousTitleBtnClicked.selected = NO;
     titleBtn.selected = YES;
     self.previousTitleBtnClicked = titleBtn;
-    
+        
     [UIView animateWithDuration:0.25 animations:^{
-//        self.titleUnderLine.cusWidth = [titleBtn.currentTitle sizeWithFont:titleBtn.titleLabel.font].width;
-//        self.titleUnderLine.cusWidth = [titleBtn.currentTitle sizeWithAttributes:@{NSFontAttributeName : titleBtn.titleLabel.font}].width;
+    //        self.titleUnderLine.cusWidth = [titleBtn.currentTitle sizeWithFont:titleBtn.titleLabel.font].width;
+    //        self.titleUnderLine.cusWidth = [titleBtn.currentTitle sizeWithAttributes:@{NSFontAttributeName : titleBtn.titleLabel.font}].width;
+    
         //处理下划线的滚动
         self.titleUnderLine.cusWidth = titleBtn.titleLabel.cusWidth + 10;
         self.titleUnderLine.cusCenterX = titleBtn.cusCenterX;
-        
-//        NSInteger index = [self.titlesView.subviews indexOfObject:titleBtn];
-//        NSLog(@"%ld",(long)index);
-//        CGFloat offsetX = self.scrollView.cusWidth * index;
+            
+    //        NSInteger index = [self.titlesView.subviews indexOfObject:titleBtn];
+    //        NSLog(@"%ld",(long)index);
+    //        CGFloat offsetX = self.scrollView.cusWidth * index;
 
+        //滚动scrollView
         CGFloat offsetX = self.scrollView.cusWidth * titleBtn.tag;
-//        NSLog(@"%ld",(long)titleBtn.tag);
+    //        NSLog(@"%ld",(long)titleBtn.tag);
         //通过确定点标来确定偏移量
-#warning bug - cell显示有bug
+    #warning bug - cell显示有bug
         self.scrollView.contentOffset = CGPointMake(offsetX, self.scrollView.contentOffset.y);
     } completion:^(BOOL finished) {
-        
+        //添加子控制器的view
         [self addChildVcIntoScrollView:titleBtn.tag];
         /*
         //添加子控制器的view
         UIView *childView = self.childViewControllers[titleBtn.tag].view;
         childView.frame = CGRectMake(titleBtn.tag * self.scrollView.cusWidth, -88, self.scrollView.cusWidth, self.scrollView.cusHeight);
         [self.scrollView addSubview:childView];
-         */
+        */
     }];
-    
+        
     //设置index对应位置的tableView.scrollsToTop = YES，其他都设置为NO
     for (NSInteger i=0; i<self.childViewControllers.count; i++) {
         UIViewController *childVC = self.childViewControllers[i];
@@ -217,7 +228,6 @@
         scrollView.scrollsToTop = (i == titleBtn.tag);
     }
 }
-
 /*
 - (void)titleBtnClick:(CusTitleButton *)titleBtn
 {
@@ -240,7 +250,8 @@
     //点击对应的标题按钮
     CusTitleButton *titleBtn = self.titlesView.subviews[index];
 //    CusTitleButton *titleBtn = [self.titlesView viewWithTag:index];  //这个会报错
-    [self titleBtnClick:titleBtn];
+//    [self titleBtnClick:titleBtn];
+    [self dealTitleBtnClick:titleBtn];
 }
 
 #pragma mark - other functions
@@ -261,14 +272,6 @@
     //添加子控制器的view到scrollView中
     [self.scrollView addSubview:childVCView];
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -20,6 +20,8 @@
 //当前最后一条帖子数据的描述信息，用于加载下一页的数据（更早的数据）
 @property (nonatomic, copy) NSString *maxtime;
 
+@property (nonatomic, strong) AFHTTPSessionManager *manager;
+
 @property (nonatomic, weak) UIView *header;         //上拉刷新控件
 @property (nonatomic, weak) UILabel *headerLbl;     //上拉刷新文字
 @property (nonatomic, assign, getter=isHeaderRefreshing) BOOL headerRefreshing;  //下拉刷新控件是否正在刷新
@@ -31,6 +33,15 @@
 @end
 
 @implementation OneVC
+
+//懒加载
+- (AFHTTPSessionManager *)manager
+{
+    if (!_manager) {
+        _manager = [AFHTTPSessionManager manager];
+    }
+    return  _manager;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -278,29 +289,43 @@
 -(void)loadNewPosts
 {
     //发送请求给服务器，下拉刷新数据
-    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+//    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+    
+    //取消之前（上拉）的请求任务, 避免与下拉冲突
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
     NSMutableDictionary *para = [NSMutableDictionary dictionary];
     para[@"a"] = @"list";
     para[@"c"] = @"data";
     para[@"type"] = @"1";
+//    para[@"mintime"] = @"";
     
-    [mgr GET:CusCommonURL parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id   _Nullable responseObject) {
+    [self.manager GET:CusCommonURL parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id   _Nullable responseObject) {
 //        NSLog(@"请求成功 - %@", responseObject);
         [responseObject writeToFile:@"/Users/dylanchan/Desktop/VicTory/VicTory/Essence/newPosts.plist" atomically:YES];
         
         //存储maxtime
         self.maxtime = responseObject[@"info"][@"maxtime"];
         
-        //字典数组 -> 模型数组
+        //字典数组 -> 模型数组 (直接覆盖）
         self.posts = [Post mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        
+//        NSMutableArray *newPosts = [Post mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+//        if (self.posts) {
+//            [self.posts insertObjects:newPosts atIndexes:[NSIndexSet indexSetWithIndex:0]];
+//        } else {
+//            self.posts = newPosts;
+//        }
+        
         //刷新表格
         [self.tableView reloadData];
         //结束刷新
         [self headerEndRefreshing];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 //        NSLog(@"请求失败 - %@", error);
-        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试！"];
+        if (error.code != NSURLErrorCancelled) {
+            [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试！"];
+        }
         //结束刷新
         [self headerEndRefreshing];
     }];
@@ -319,7 +344,10 @@
 -(void)loadMorePosts
 {
     //发送请求给服务器 - 加载更多数据
-    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+//    AFHTTPSessionManager *mgr = [AFHTTPSessionManager manager];
+    
+    //取消之前（下拉）的请求任务, 避免与上拉冲突
+    [self.manager.tasks makeObjectsPerformSelector:@selector(cancel)];
     
     NSMutableDictionary *para = [NSMutableDictionary dictionary];
     para[@"a"] = @"list";
@@ -329,7 +357,7 @@
     
 //    para[@"page"] = @(self.page + 1);
     
-    [mgr GET:CusCommonURL parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id   _Nullable responseObject) {
+    [self.manager GET:CusCommonURL parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id   _Nullable responseObject) {
         //NSLog(@"请求成功 - %@", responseObject);
         [responseObject writeToFile:@"/Users/dylanchan/Desktop/VicTory/VicTory/Essence/morePosts.plist" atomically:YES];
         
@@ -349,7 +377,9 @@
 //        self.page = [para[@"page"] integerValue];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //NSLog(@"请求失败 - %@", error);
-        [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试！"];
+        if (error.code != NSURLErrorCancelled) {
+            [SVProgressHUD showErrorWithStatus:@"网络繁忙，请稍后再试！"];
+        }
         //结束刷新
         [self footerEndRefreshing];
     }];

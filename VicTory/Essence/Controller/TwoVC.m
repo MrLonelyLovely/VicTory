@@ -43,13 +43,23 @@
     if(self.tableView.scrollsToTop == NO) return;
     
     NSLog(@"%s",__func__);
+    NSLog(@"111111");
 }
 
 //监听titleBtn的重复点击
 -(void)titleBtnDidClickedAgain
 {
-    [self tabBarBtnDidClickedAgain];
+//    [self tabBarBtnDidClickedAgain];
+    //如果重复点击的不是主页按钮，则直接返回
+    if(self.view.window == nil) return;
+    
+    //如果显示的不是 全部 对应的界面，则直接返回
+    if(self.tableView.scrollsToTop == NO) return;
+    
+    NSLog(@"%s",__func__);
+    NSLog(@"%@",self.class);
 }
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
