@@ -11,6 +11,7 @@
 #import <MJExtension/MJExtension.h>
 #import "Post.h"
 #import <SVProgressHUD/SVProgressHUD.h>
+#import "PostCell.h"
 
 @interface OneVC ()
 
@@ -34,6 +35,8 @@
 
 @implementation OneVC
 
+static NSString * const PostCellID = @"PostCellID";
+
 //懒加载
 - (AFHTTPSessionManager *)manager
 {
@@ -56,6 +59,9 @@
 //    NSLog(@"%f",CusNavH + CusTitlesViewH);
     //设置滚动条与显示的cell一致，避免也跟着cell穿透
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    
+    //注册cell
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([PostCell class]) bundle:nil] forCellReuseIdentifier:PostCellID];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabBarBtnDidClickedAgain) name:CusTabBarBtnDidClickAgainNotification object:nil];
     
@@ -131,6 +137,10 @@
 
 #pragma mark - Table view data source
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 398;
+}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -142,6 +152,7 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    /*
     static NSString *ID = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     if (cell == nil) {
@@ -154,6 +165,11 @@
     cell.detailTextLabel.text = post.text;
     
 //    cell.textLabel.text = [NSString stringWithFormat:@"%@-%zd",self.class, indexPath.row];
+    */
+    
+    PostCell *cell = [tableView dequeueReusableCellWithIdentifier:PostCellID];
+    
+    cell.post = self.posts[indexPath.row];
     
     return cell;
 }

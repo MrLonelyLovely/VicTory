@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3424647C2350954D00212879 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3424647A2350954D00212879 /* PostCell.m */; };
+		3424647D2350954D00212879 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3424647B2350954D00212879 /* PostCell.xib */; };
 		34476E5E2330769400D5FDAE /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34476E5C2330769400D5FDAE /* CollectionViewCell.m */; };
 		34476E5F2330769400D5FDAE /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34476E5D2330769400D5FDAE /* CollectionViewCell.xib */; };
 		34476E622330BB1E00D5FDAE /* SquareItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 34476E612330BB1E00D5FDAE /* SquareItem.m */; };
@@ -58,6 +60,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		342464792350954D00212879 /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
+		3424647A2350954D00212879 /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
+		3424647B2350954D00212879 /* PostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
 		34476E5B2330769400D5FDAE /* CollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		34476E5C2330769400D5FDAE /* CollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		34476E5D2330769400D5FDAE /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
@@ -251,6 +256,9 @@
 			children = (
 				34797EE9233321D5007B23B3 /* CusTitleButton.h */,
 				34797EEA233321D5007B23B3 /* CusTitleButton.m */,
+				342464792350954D00212879 /* PostCell.h */,
+				3424647A2350954D00212879 /* PostCell.m */,
+				3424647B2350954D00212879 /* PostCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -624,6 +632,7 @@
 				34A4E4B2231CD84C0041D405 /* Assets.xcassets in Resources */,
 				34E2EA1B23291FD200AD3534 /* MeTVC.storyboard in Resources */,
 				34E2EA0323278AF000AD3534 /* LoginRegisterVC.xib in Resources */,
+				3424647D2350954D00212879 /* PostCell.xib in Resources */,
 				34D866CB23277C21002794B4 /* FriendTrendVC.xib in Resources */,
 				34E2EA102328C29500AD3534 /* FastLoginView.xib in Resources */,
 				34A4E4B0231CD84B0041D405 /* Main.storyboard in Resources */,
@@ -709,6 +718,7 @@
 				34E2EA16232906E800AD3534 /* LoginTextField.m in Sources */,
 				34CE17C7231FB94B009C2B3D /* CusNavigationController.m in Sources */,
 				34CE1797231D3699009C2B3D /* MeTVC.m in Sources */,
+				3424647C2350954D00212879 /* PostCell.m in Sources */,
 				34797EFD2333B331007B23B3 /* CusConst.m in Sources */,
 				34CE17BA231E8DF1009C2B3D /* CusTabBar.m in Sources */,
 				34A3DEA2233DE78F00CA5A6A /* Post.m in Sources */,

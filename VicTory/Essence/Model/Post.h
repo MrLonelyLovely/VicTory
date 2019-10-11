@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Post : NSObject
 
 @property (nonatomic, copy) NSString *name;                //用户名
-@property (nonatomic, copy) NSString *profile_name;        //头像
+@property (nonatomic, copy) NSString *profile_image;        //头像
 @property (nonatomic, copy) NSString *text;                //正文
 @property (nonatomic, copy) NSString *passtime;            //发帖时间
 
@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger repost;            //转发数
 @property (nonatomic, assign) NSInteger comment;           //评论数
 
+@property (nonatomic, assign) NSInteger type;              //帖子的类型
 @end
 
 NS_ASSUME_NONNULL_END
