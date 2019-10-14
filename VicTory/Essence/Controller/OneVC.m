@@ -205,9 +205,12 @@ static NSString * const PostCellID = @"PostCellID";
 
 //处理cell的高度
 /*
- 默认情况下，
- 每次刷新表格时，有多少数据，此方法就一次性调用多少次（比如有100条数据，每次reloadData，这个方法就会一次性调用100次）；
- 每当有cell进入屏幕视野范围内（上拉或者下拉），就会调用一次此方法。
+ 1.默认情况下(没有设置estminatedRowHeight的情况下）
+ 1）每次刷新表格时，有多少数据，此方法就一次性调用多少次（比如有100条数据，每次reloadData，这个方法就会一次性调用100次）；
+ 2）每当有cell进入屏幕视野范围内（上拉或者下拉），就会调用一次此方法。
+ 
+ 2.设置estminatedRowHeight的情况下
+ 1）用到了（显示了）哪个cell，才会调用此方法计算那个cell的高度（方法调用次数变少了）
  */
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

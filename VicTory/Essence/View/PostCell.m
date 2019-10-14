@@ -23,6 +23,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *commentBtn;
 @property (weak, nonatomic) IBOutlet UIButton *shareBtn;
 
+@property (weak, nonatomic) IBOutlet UILabel *hottestCommentLbl;
+@property (weak, nonatomic) IBOutlet UIView *hottestCommentView;
+
 @end
 
 @implementation PostCell
@@ -31,17 +34,32 @@
 {
     _post = post;
     
+    //顶部控件的数据
     [self.headImageView sd_setImageWithURL:[NSURL URLWithString:post.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
     self.nickNameLbl.text = post.name;
     self.launchTimeLbl.text = post.passtime;
     self.textLbl.text = post.text;
     
+    //底部按钮的文字
     [self setupBtmBtn:self.likeBtn number:post.ding placeholder:@"赞"];
     [self setupBtmBtn:self.dislikeBtn number:post.cai placeholder:@"弹"];
     [self setupBtmBtn:self.commentBtn number:post.comment placeholder:@"评论"];
     [self setupBtmBtn:self.shareBtn number:post.repost placeholder:@"分享"];
 
-    
+    //最热评论
+    if (post.top_cmt.count) {   //有最热评论
+        self.hottestCommentView.hidden = NO;
+        
+        NSDictionary *comment = post.top_cmt.firstObject;
+        NSString *content = comment[@"content"];
+        if (content.length == 0) {
+            content = @"[语音评论]";
+        }
+        NSString *username = comment[@"user"][@"username"];
+        self.hottestCommentLbl.text = [NSString stringWithFormat:@"%@ : %@",username, content];
+    } else {     //没有最热评论
+        self.hottestCommentView.hidden = YES;
+    }
 }
 
 

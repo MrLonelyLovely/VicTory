@@ -33,6 +33,15 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ud4-Pr-6HY" userLabel="launchTime">
+                        <rect key="frame" x="60" y="28" width="212" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="212" id="hbg-Mp-9o9"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbK-7G-b8H" userLabel="text">
                         <rect key="frame" x="10" y="55" width="300" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -96,27 +105,49 @@
                             <constraint firstAttribute="height" constant="35" id="DHy-px-tuM"/>
                         </constraints>
                     </stackView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ud4-Pr-6HY" userLabel="launchTime">
-                        <rect key="frame" x="60" y="28" width="212" height="17"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="78Q-B8-fWx">
+                        <rect key="frame" x="10" y="252" width="300" height="101"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最热评论" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ox-ln-xH1">
+                                <rect key="frame" x="0.0" y="0.0" width="57.5" height="17"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我国电影票房以50.5亿元创同期历史新高，新中国成立70周年重点影片《我和我的祖国》《中国机长》《攀登者》领跑，创作者通过类型化创作和艺术创新，与观众的爱党爱国信念和拼搏奋进激情共鸣共振……" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fa8-rg-Q3a">
+                                <rect key="frame" x="0.0" y="17" width="300" height="84"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="212" id="hbg-Mp-9o9"/>
+                            <constraint firstItem="Fa8-rg-Q3a" firstAttribute="top" secondItem="0ox-ln-xH1" secondAttribute="bottom" id="61F-dS-7wG"/>
+                            <constraint firstAttribute="trailing" secondItem="Fa8-rg-Q3a" secondAttribute="trailing" id="KOL-Il-rTC"/>
+                            <constraint firstAttribute="bottom" secondItem="Fa8-rg-Q3a" secondAttribute="bottom" id="XYt-CK-Xgs"/>
+                            <constraint firstItem="0ox-ln-xH1" firstAttribute="top" secondItem="78Q-B8-fWx" secondAttribute="top" id="a9H-Ey-gAS"/>
+                            <constraint firstItem="Fa8-rg-Q3a" firstAttribute="leading" secondItem="78Q-B8-fWx" secondAttribute="leading" id="asJ-Ru-GUc"/>
+                            <constraint firstItem="0ox-ln-xH1" firstAttribute="leading" secondItem="78Q-B8-fWx" secondAttribute="leading" id="oLs-P8-YcG"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="VQB-a5-1zT" secondAttribute="trailing" constant="10" id="2Xj-m3-Fcs"/>
                     <constraint firstItem="dbK-7G-b8H" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="5GW-Ed-uWz"/>
                     <constraint firstItem="xbF-wU-OZV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="7Zd-pd-Ued"/>
                     <constraint firstItem="VQB-a5-1zT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="9Um-zE-ncH"/>
+                    <constraint firstItem="d0C-FA-I0Y" firstAttribute="top" secondItem="78Q-B8-fWx" secondAttribute="bottom" constant="10" id="J6J-yb-S3O"/>
                     <constraint firstItem="0TP-bS-MNJ" firstAttribute="top" secondItem="xbF-wU-OZV" secondAttribute="top" id="Jl5-fh-hO8"/>
                     <constraint firstItem="xbF-wU-OZV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="T1y-OB-gah"/>
                     <constraint firstAttribute="bottom" secondItem="d0C-FA-I0Y" secondAttribute="bottom" id="ZiR-Ri-tjN"/>
                     <constraint firstItem="xbF-wU-OZV" firstAttribute="bottom" secondItem="ud4-Pr-6HY" secondAttribute="bottom" id="bKc-GS-4Du"/>
                     <constraint firstAttribute="trailing" secondItem="dbK-7G-b8H" secondAttribute="trailing" constant="10" id="bPE-Ay-oZD"/>
+                    <constraint firstItem="78Q-B8-fWx" firstAttribute="trailing" secondItem="dbK-7G-b8H" secondAttribute="trailing" id="erm-l7-jBr"/>
                     <constraint firstAttribute="trailing" secondItem="d0C-FA-I0Y" secondAttribute="trailing" id="hWr-DA-klg"/>
+                    <constraint firstItem="78Q-B8-fWx" firstAttribute="leading" secondItem="dbK-7G-b8H" secondAttribute="leading" id="iMz-Rx-UdL"/>
                     <constraint firstItem="dbK-7G-b8H" firstAttribute="top" secondItem="xbF-wU-OZV" secondAttribute="bottom" constant="10" id="isZ-PV-6k7"/>
                     <constraint firstItem="d0C-FA-I0Y" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="jcZ-8l-RTK"/>
                     <constraint firstItem="0TP-bS-MNJ" firstAttribute="leading" secondItem="xbF-wU-OZV" secondAttribute="trailing" constant="15" id="k2E-Zu-lpp"/>
@@ -128,6 +159,8 @@
                 <outlet property="commentBtn" destination="TSi-uy-CoG" id="VZu-Eb-0kL"/>
                 <outlet property="dislikeBtn" destination="BLi-4b-U4I" id="TRP-Nn-k5b"/>
                 <outlet property="headImageView" destination="xbF-wU-OZV" id="eL5-AK-YT1"/>
+                <outlet property="hottestCommentLbl" destination="Fa8-rg-Q3a" id="S1J-TG-P7l"/>
+                <outlet property="hottestCommentView" destination="78Q-B8-fWx" id="F3b-YB-oVi"/>
                 <outlet property="launchTimeLbl" destination="ud4-Pr-6HY" id="dhM-Ub-wCK"/>
                 <outlet property="likeBtn" destination="aiD-GF-U9C" id="cq0-PK-tXT"/>
                 <outlet property="moreBtn" destination="VQB-a5-1zT" id="KbS-4V-Ln5"/>
