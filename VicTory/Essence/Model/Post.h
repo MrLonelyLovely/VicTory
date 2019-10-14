@@ -23,6 +23,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger comment;           //评论数
 
 @property (nonatomic, assign) NSInteger type;              //帖子的类型
+
+//额外增加的属性，并非服务器返回的属性，根据当前模型计算出来的cell高度
+@property (nonatomic, assign) CGFloat cellHeight;
 @end
 
 NS_ASSUME_NONNULL_END

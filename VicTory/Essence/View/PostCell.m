@@ -67,4 +67,12 @@
     // Configure the view for the selected state
 }
 
+- (void)setFrame:(CGRect)frame
+{
+    //调整cell之间垂直间距
+    frame.size.height -= 10;
+    
+    [super setFrame:frame];
+}
+
 @end

@@ -16,7 +16,8 @@
 @interface OneVC ()
 
 @property (nonatomic, assign) NSInteger dataCount;
-@property (nonatomic, strong) NSMutableArray *posts;
+@property (nonatomic, strong) NSMutableArray<Post *> *posts;
+
 //@property (nonatomic, assign) NSUInteger page;
 //当前最后一条帖子数据的描述信息，用于加载下一页的数据（更早的数据）
 @property (nonatomic, copy) NSString *maxtime;
@@ -51,7 +52,7 @@ static NSString * const PostCellID = @"PostCellID";
     
 //    self.dataCount = 5;
     
-    self.view.backgroundColor = RandomColor;
+    self.view.backgroundColor = [UIColor lightGrayColor];
     
     //对于iPhone xs/x
 //    self.tableView.contentInset = UIEdgeInsetsMake(88, 0, 83, 0);
@@ -137,10 +138,12 @@ static NSString * const PostCellID = @"PostCellID";
 
 #pragma mark - Table view data source
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 398;
+    //点击cell后灰色高亮会逐渐变淡消失
+    [tableView deselectRowAtIndexPath:indexPath animated:true];
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -199,6 +202,21 @@ static NSString * const PostCellID = @"PostCellID";
         [self headerBeginRefreshing];
     }
 }
+
+//处理cell的高度
+/*
+ 默认情况下，
+ 每次刷新表格时，有多少数据，此方法就一次性调用多少次（比如有100条数据，每次reloadData，这个方法就会一次性调用100次）；
+ 每当有cell进入屏幕视野范围内（上拉或者下拉），就会调用一次此方法。
+ */
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    return 398;
+    return self.posts[indexPath.row].cellHeight;
+}
+
+#pragma mark - hanlde refresh
+
 -(void)handleHeader
 {
     //如果正在下拉刷新，则直接返回
@@ -316,7 +334,7 @@ static NSString * const PostCellID = @"PostCellID";
     para[@"type"] = @"1";
 //    para[@"mintime"] = @"";
     
-    [self.manager GET:CusCommonURL parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id   _Nullable responseObject) {
+    [self.manager GET:CusCommonURL parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
 //        NSLog(@"请求成功 - %@", responseObject);
         [responseObject writeToFile:@"/Users/dylanchan/Desktop/VicTory/VicTory/Essence/newPosts.plist" atomically:YES];
         
