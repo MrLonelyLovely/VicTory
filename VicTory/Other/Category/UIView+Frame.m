@@ -81,4 +81,9 @@
     return self.center.y;
 }
 
++ (instancetype)cusViewFromXIb
+{
+    return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil].firstObject;
+}
+
 @end

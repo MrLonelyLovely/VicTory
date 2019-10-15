@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property CGFloat cusY;
 @property CGFloat cusCenterX;
 @property CGFloat cusCenterY;
+
++(instancetype)cusViewFromXIb;
+
 @end
 
 NS_ASSUME_NONNULL_END

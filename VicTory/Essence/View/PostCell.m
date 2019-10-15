@@ -10,6 +10,10 @@
 #import "Post.h"
 #import <UIImageView+WebCache.h>
 
+#import "PostTwoView.h"
+#import "PostThreeView.h"
+#import "PostFourView.h"
+
 @interface PostCell()
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
@@ -26,10 +30,54 @@
 @property (weak, nonatomic) IBOutlet UILabel *hottestCommentLbl;
 @property (weak, nonatomic) IBOutlet UIView *hottestCommentView;
 
+// 中间控件
+// 视频控件
+@property (nonatomic, weak) PostTwoView *videoView;
+// 图片控件
+@property (nonatomic, weak) PostThreeView *pictureView;
+// 声音控件
+@property (nonatomic, weak) PostFourView *voiceView;
+
+
 @end
 
 @implementation PostCell
 
+#pragma mark - 懒加载
+
+- (PostTwoView *)videoView
+{
+    if (!_videoView) {
+        PostTwoView *videoView = [PostTwoView cusViewFromXIb];
+        [self.contentView addSubview:videoView];
+        _videoView = videoView;
+    }
+    return _videoView;
+}
+
+- (PostThreeView *)pictureView
+{
+    if (!_pictureView) {
+        PostThreeView *pictureView = [PostThreeView cusViewFromXIb];
+        [self.contentView addSubview:pictureView];
+        _pictureView = pictureView;
+    }
+    return _pictureView;
+}
+
+- (PostFourView *)voiceView
+{
+    if (!_voiceView) {
+        PostFourView *voiceView = [PostFourView cusViewFromXIb];
+        [self.contentView addSubview:voiceView];
+        _voiceView = voiceView;
+    }
+    return _voiceView;
+}
+
+
+
+#pragma mark - 添加post内容
 - (void) setPost:(Post *)post
 {
     _post = post;
@@ -60,8 +108,39 @@
     } else {     //没有最热评论
         self.hottestCommentView.hidden = YES;
     }
+    
+    //中间的图片内容
+    //1为全部，10为图片，29为段子，31为音频，41为视频，默认为1
+    if (post.type == 10) {  //图片
+        self.pictureView.hidden = NO;
+        self.videoView.hidden = YES;
+        self.voiceView.hidden = YES;
+    } else if (post.type == 31) {    //音频
+        self.voiceView.hidden = NO;
+        self.pictureView.hidden = YES;
+        self.videoView.hidden = YES;
+    } else if(post.type == 41) {       //视频
+        self.videoView.hidden = NO;
+        self.pictureView.hidden = YES;
+        self.voiceView.hidden = YES;
+    } else if (post.type == 29) {  //避免循环利用的cell错乱
+        self.pictureView.hidden = YES;
+        self.videoView.hidden = YES;
+        self.voiceView.hidden = YES;
+    }
 }
 
+//处理中间控件的位置大小
+- (void)layoutSubviews
+{
+    if (self.post.type == 10) {  //图片
+        self.pictureView.frame = self.post.middleFrame;
+    } else if (self.post.type == 31) {    //音频
+        self.voiceView.frame = self.post.middleFrame;
+    } else if(self.post.type == 41) {       //视频
+        self.videoView.frame = self.post.middleFrame;
+    }
+}
 
 - (void)setupBtmBtn:(UIButton *)button number:(NSInteger)number placeholder:(NSString *)placeholder
 {

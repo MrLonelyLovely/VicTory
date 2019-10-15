@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		3424647C2350954D00212879 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3424647A2350954D00212879 /* PostCell.m */; };
 		3424647D2350954D00212879 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3424647B2350954D00212879 /* PostCell.xib */; };
+		342464802355A01C00212879 /* PostTwoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3424647F2355A01C00212879 /* PostTwoView.m */; };
+		342464822355A03100212879 /* PostTwoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 342464812355A03100212879 /* PostTwoView.xib */; };
+		342464852355A08100212879 /* PostThreeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 342464842355A08100212879 /* PostThreeView.m */; };
+		342464872355A09100212879 /* PostThreeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 342464862355A09100212879 /* PostThreeView.xib */; };
+		3424648A2355A0F700212879 /* PostFourView.m in Sources */ = {isa = PBXBuildFile; fileRef = 342464892355A0F700212879 /* PostFourView.m */; };
+		3424648C2355A10C00212879 /* PostFourView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3424648B2355A10C00212879 /* PostFourView.xib */; };
 		34476E5E2330769400D5FDAE /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34476E5C2330769400D5FDAE /* CollectionViewCell.m */; };
 		34476E5F2330769400D5FDAE /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34476E5D2330769400D5FDAE /* CollectionViewCell.xib */; };
 		34476E622330BB1E00D5FDAE /* SquareItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 34476E612330BB1E00D5FDAE /* SquareItem.m */; };
@@ -63,6 +69,15 @@
 		342464792350954D00212879 /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
 		3424647A2350954D00212879 /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
 		3424647B2350954D00212879 /* PostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
+		3424647E2355A01C00212879 /* PostTwoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostTwoView.h; sourceTree = "<group>"; };
+		3424647F2355A01C00212879 /* PostTwoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostTwoView.m; sourceTree = "<group>"; };
+		342464812355A03100212879 /* PostTwoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTwoView.xib; sourceTree = "<group>"; };
+		342464832355A08100212879 /* PostThreeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostThreeView.h; sourceTree = "<group>"; };
+		342464842355A08100212879 /* PostThreeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostThreeView.m; sourceTree = "<group>"; };
+		342464862355A09100212879 /* PostThreeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostThreeView.xib; sourceTree = "<group>"; };
+		342464882355A0F700212879 /* PostFourView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostFourView.h; sourceTree = "<group>"; };
+		342464892355A0F700212879 /* PostFourView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostFourView.m; sourceTree = "<group>"; };
+		3424648B2355A10C00212879 /* PostFourView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostFourView.xib; sourceTree = "<group>"; };
 		34476E5B2330769400D5FDAE /* CollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		34476E5C2330769400D5FDAE /* CollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		34476E5D2330769400D5FDAE /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
@@ -259,6 +274,15 @@
 				342464792350954D00212879 /* PostCell.h */,
 				3424647A2350954D00212879 /* PostCell.m */,
 				3424647B2350954D00212879 /* PostCell.xib */,
+				3424647E2355A01C00212879 /* PostTwoView.h */,
+				3424647F2355A01C00212879 /* PostTwoView.m */,
+				342464812355A03100212879 /* PostTwoView.xib */,
+				342464832355A08100212879 /* PostThreeView.h */,
+				342464842355A08100212879 /* PostThreeView.m */,
+				342464862355A09100212879 /* PostThreeView.xib */,
+				342464882355A0F700212879 /* PostFourView.h */,
+				342464892355A0F700212879 /* PostFourView.m */,
+				3424648B2355A10C00212879 /* PostFourView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -631,8 +655,11 @@
 				34CE17D72320E317009C2B3D /* AdverseVC.xib in Resources */,
 				34A4E4B2231CD84C0041D405 /* Assets.xcassets in Resources */,
 				34E2EA1B23291FD200AD3534 /* MeTVC.storyboard in Resources */,
+				342464822355A03100212879 /* PostTwoView.xib in Resources */,
+				3424648C2355A10C00212879 /* PostFourView.xib in Resources */,
 				34E2EA0323278AF000AD3534 /* LoginRegisterVC.xib in Resources */,
 				3424647D2350954D00212879 /* PostCell.xib in Resources */,
+				342464872355A09100212879 /* PostThreeView.xib in Resources */,
 				34D866CB23277C21002794B4 /* FriendTrendVC.xib in Resources */,
 				34E2EA102328C29500AD3534 /* FastLoginView.xib in Resources */,
 				34A4E4B0231CD84B0041D405 /* Main.storyboard in Resources */,
@@ -690,10 +717,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				34A4E4AD231CD84B0041D405 /* ViewController.m in Sources */,
+				342464802355A01C00212879 /* PostTwoView.m in Sources */,
 				34E2EA062327CD5E00AD3534 /* LoginRegisterView.m in Sources */,
 				34CE17C4231FA31E009C2B3D /* UIBarButtonItem+Item.m in Sources */,
 				34476E622330BB1E00D5FDAE /* SquareItem.m in Sources */,
 				34CE17DD23260E1A009C2B3D /* SubTagTVC.m in Sources */,
+				3424648A2355A0F700212879 /* PostFourView.m in Sources */,
 				34E2EA132328D1F800AD3534 /* FastLoginBtn.m in Sources */,
 				34E2EA192329122D00AD3534 /* UITextField+Placeholder.m in Sources */,
 				34E2EA0223278AF000AD3534 /* LoginRegisterVC.m in Sources */,
@@ -716,6 +745,7 @@
 				34CE179A231D36E1009C2B3D /* FriendTrendVC.m in Sources */,
 				34CE17A0231D374C009C2B3D /* NewVC.m in Sources */,
 				34E2EA16232906E800AD3534 /* LoginTextField.m in Sources */,
+				342464852355A08100212879 /* PostThreeView.m in Sources */,
 				34CE17C7231FB94B009C2B3D /* CusNavigationController.m in Sources */,
 				34CE1797231D3699009C2B3D /* MeTVC.m in Sources */,
 				3424647C2350954D00212879 /* PostCell.m in Sources */,

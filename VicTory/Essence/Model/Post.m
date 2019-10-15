@@ -22,6 +22,25 @@
     CGSize textMaxSize = CGSizeMake(SCREEN_W - 20, MAXFLOAT);
     _cellHeight += [self.text boundingRectWithSize:textMaxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:14]} context:nil].size.height + 20;
     
+    //中间的内容
+    //1为全部，10为图片，29为段子，31为音频，41为视频，默认为1
+    if (self.type != 29) {
+        /*
+        self.width     middleW
+        ----------- == -------
+        self.height    middleH
+        
+        self.width * middleH == middleW * self.height
+        */
+        
+        CGFloat middleW = textMaxSize.width;
+        CGFloat middleH = middleW * self.height / self.width;
+        CGFloat middleY = _cellHeight;
+        CGFloat middleX = 10;
+        self.middleFrame = CGRectMake(middleX, middleY, middleW, middleH);
+        _cellHeight += middleH + 10;
+    }
+    
     //最热评论
     if (self.top_cmt.count) {
         //标题
