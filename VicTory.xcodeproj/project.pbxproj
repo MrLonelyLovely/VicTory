@@ -15,6 +15,7 @@
 		342464872355A09100212879 /* PostThreeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 342464862355A09100212879 /* PostThreeView.xib */; };
 		3424648A2355A0F700212879 /* PostFourView.m in Sources */ = {isa = PBXBuildFile; fileRef = 342464892355A0F700212879 /* PostFourView.m */; };
 		3424648C2355A10C00212879 /* PostFourView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3424648B2355A10C00212879 /* PostFourView.xib */; };
+		3424648F2356F39D00212879 /* UIImageView+Download.m in Sources */ = {isa = PBXBuildFile; fileRef = 3424648E2356F39D00212879 /* UIImageView+Download.m */; };
 		34476E5E2330769400D5FDAE /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34476E5C2330769400D5FDAE /* CollectionViewCell.m */; };
 		34476E5F2330769400D5FDAE /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34476E5D2330769400D5FDAE /* CollectionViewCell.xib */; };
 		34476E622330BB1E00D5FDAE /* SquareItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 34476E612330BB1E00D5FDAE /* SquareItem.m */; };
@@ -78,6 +79,8 @@
 		342464882355A0F700212879 /* PostFourView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostFourView.h; sourceTree = "<group>"; };
 		342464892355A0F700212879 /* PostFourView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostFourView.m; sourceTree = "<group>"; };
 		3424648B2355A10C00212879 /* PostFourView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostFourView.xib; sourceTree = "<group>"; };
+		3424648D2356F39D00212879 /* UIImageView+Download.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Download.h"; sourceTree = "<group>"; };
+		3424648E2356F39D00212879 /* UIImageView+Download.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Download.m"; sourceTree = "<group>"; };
 		34476E5B2330769400D5FDAE /* CollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		34476E5C2330769400D5FDAE /* CollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		34476E5D2330769400D5FDAE /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
@@ -508,6 +511,8 @@
 				34E2EA0A2328B68D00AD3534 /* UIView+Frame.m */,
 				34E2EA172329122D00AD3534 /* UITextField+Placeholder.h */,
 				34E2EA182329122D00AD3534 /* UITextField+Placeholder.m */,
+				3424648D2356F39D00212879 /* UIImageView+Download.h */,
+				3424648E2356F39D00212879 /* UIImageView+Download.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -752,6 +757,7 @@
 				34797EFD2333B331007B23B3 /* CusConst.m in Sources */,
 				34CE17BA231E8DF1009C2B3D /* CusTabBar.m in Sources */,
 				34A3DEA2233DE78F00CA5A6A /* Post.m in Sources */,
+				3424648F2356F39D00212879 /* UIImageView+Download.m in Sources */,
 				34CE17E0232613D1009C2B3D /* SubTagItem.m in Sources */,
 				34797EF723337EDD007B23B3 /* FourVC.m in Sources */,
 				34797EF123337EB6007B23B3 /* TwoVC.m in Sources */,

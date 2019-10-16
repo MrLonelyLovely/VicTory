@@ -34,6 +34,7 @@
 @property (nonatomic, weak) UILabel *footerLbl;
 @property (nonatomic, assign, getter=isFooterRefreshing) BOOL footerRefreshing;
 
+-(PostType)postType;
 @end
 
 @implementation OneVC
@@ -324,6 +325,12 @@ static NSString * const PostCellID = @"PostCellID";
 }
 
 #pragma mark - 刷新数据处理
+
+-(PostType)postType
+{
+    return PostTypeVideo;
+}
+
 //发送请求给服务器，下拉刷新数据
 -(void)loadNewPosts
 {
@@ -336,7 +343,7 @@ static NSString * const PostCellID = @"PostCellID";
     NSMutableDictionary *para = [NSMutableDictionary dictionary];
     para[@"a"] = @"list";
     para[@"c"] = @"data";
-    para[@"type"] = @"1";
+    para[@"type"] = @(self.postType);
 //    para[@"mintime"] = @"";
     
     [self.manager GET:CusCommonURL parameters:para progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseObject) {
@@ -391,7 +398,7 @@ static NSString * const PostCellID = @"PostCellID";
     NSMutableDictionary *para = [NSMutableDictionary dictionary];
     para[@"a"] = @"list";
     para[@"c"] = @"data";
-    para[@"type"] = @"1";
+    para[@"type"] = @(self.postType);
     para[@"maxtime"] = self.maxtime;
     
 //    para[@"page"] = @(self.page + 1);

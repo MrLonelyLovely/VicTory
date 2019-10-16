@@ -10,7 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class Post;
+
 @interface PostTwoView : UIView
+
+@property (nonatomic, strong) Post *post;
 
 @end
 

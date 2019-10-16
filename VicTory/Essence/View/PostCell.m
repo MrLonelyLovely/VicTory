@@ -32,11 +32,12 @@
 
 // 中间控件
 // 视频控件
-@property (nonatomic, weak) PostTwoView *videoView;
-// 图片控件
-@property (nonatomic, weak) PostThreeView *pictureView;
+@property (nonatomic, weak) PostTwoView *videoView;   //two
 // 声音控件
-@property (nonatomic, weak) PostFourView *voiceView;
+@property (nonatomic, weak) PostThreeView *voiceView;   //three
+// 图片控件
+@property (nonatomic, weak)  PostFourView *pictureView;    //four
+
 
 
 @end
@@ -55,25 +56,27 @@
     return _videoView;
 }
 
-- (PostThreeView *)pictureView
+- (PostThreeView *)voiceView
+{
+    if (!_voiceView) {
+        PostThreeView *voiceView = [PostThreeView cusViewFromXIb];
+        [self.contentView addSubview:voiceView];
+        _voiceView = voiceView;
+    }
+    return _voiceView;
+}
+
+- (PostFourView *)pictureView
 {
     if (!_pictureView) {
-        PostThreeView *pictureView = [PostThreeView cusViewFromXIb];
+        PostFourView *pictureView = [PostFourView cusViewFromXIb];
         [self.contentView addSubview:pictureView];
         _pictureView = pictureView;
     }
     return _pictureView;
 }
 
-- (PostFourView *)voiceView
-{
-    if (!_voiceView) {
-        PostFourView *voiceView = [PostFourView cusViewFromXIb];
-        [self.contentView addSubview:voiceView];
-        _voiceView = voiceView;
-    }
-    return _voiceView;
-}
+
 
 
 
@@ -117,10 +120,13 @@
         self.voiceView.hidden = YES;
     } else if (post.type == 31) {    //音频
         self.voiceView.hidden = NO;
+#warning point - 记得要传模型数据过来
+        self.voiceView.post = post;
         self.pictureView.hidden = YES;
         self.videoView.hidden = YES;
     } else if(post.type == 41) {       //视频
         self.videoView.hidden = NO;
+        self.videoView.post = post;
         self.pictureView.hidden = YES;
         self.voiceView.hidden = YES;
     } else if (post.type == 29) {  //避免循环利用的cell错乱
@@ -155,7 +161,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    //设置圆形头像
+    [_headImageView setRoundImageView];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

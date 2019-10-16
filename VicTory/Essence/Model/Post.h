@@ -10,6 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, PostType) {
+    
+    PostTypeAll = 1,          //全部
+    PostTypePicture = 10,     //图片
+    PostTypeWord = 29,        //纯文字
+    PostTypeVoice = 31,       //音频
+    PostTypeVideo = 41        //视频
+};
+
 @interface Post : NSObject
 
 @property (nonatomic, copy) NSString *name;                //用户名
@@ -29,6 +38,18 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) NSInteger height;    //服务器返回的图片的高度（像素）
 
 @property (nonatomic, strong) NSArray *top_cmt;        //最热评论
+
+@property (nonatomic, copy) NSString *image0;           //小图
+
+@property (nonatomic, copy) NSString *image2;           //中图
+ 
+@property (nonatomic, copy) NSString *image1;           //大图
+
+@property (nonatomic, assign) NSInteger voicetime;     //音频时长
+
+@property (nonatomic, assign) NSInteger videotime;     //视频时长
+
+@property (nonatomic, assign) NSInteger playcount;     //音频\视频的播放次数
 
 #pragma mark - extra properties
 

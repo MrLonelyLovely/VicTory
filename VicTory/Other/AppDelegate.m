@@ -12,9 +12,9 @@
  
  */
 #import "AppDelegate.h"
-
 #import "TabBarController.h"
 #import "AdverseVC.h"
+#import <AFNetworking/AFNetworking.h>
 
 @interface AppDelegate ()
 
@@ -22,7 +22,7 @@
 
 @implementation AppDelegate
 
-
+//程序启动完会调用
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 //    1.创建窗口
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -40,6 +40,9 @@
     
 //    3.显示窗口 (1.成为UIApplication主窗口 
     [self.window makeKeyAndVisible];
+    
+    //4.开始监控网络状况
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     return YES;
 }
 
