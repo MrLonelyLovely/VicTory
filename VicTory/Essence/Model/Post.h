@@ -45,6 +45,8 @@ typedef NS_ENUM(NSInteger, PostType) {
  
 @property (nonatomic, copy) NSString *image1;           //大图
 
+@property (nonatomic, assign) BOOL is_gif;              //是否是动图
+
 @property (nonatomic, assign) NSInteger voicetime;     //音频时长
 
 @property (nonatomic, assign) NSInteger videotime;     //视频时长
@@ -57,6 +59,8 @@ typedef NS_ENUM(NSInteger, PostType) {
 @property (nonatomic, assign) CGFloat cellHeight;
 //中间音视频/图片的frame
 @property (nonatomic, assign) CGRect middleFrame;
+
+@property (nonatomic, assign,getter=isLongPicture) BOOL isLongPicture;
 @end
 
 NS_ASSUME_NONNULL_END

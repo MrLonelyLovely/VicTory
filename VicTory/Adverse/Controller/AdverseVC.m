@@ -17,10 +17,13 @@
 @interface AdverseVC ()
 @property (weak, nonatomic) IBOutlet UIImageView *LaunchImageView;
 @property (weak, nonatomic) IBOutlet UIView *AdverseContainView;
+
+@property (weak, nonatomic) IBOutlet UIButton *jumpBtn;
+
 @property (nonatomic,weak) UIImageView *adView;
 @property (nonatomic,strong) AdItem *item;
 @property (nonatomic,weak) NSTimer *timer;
-@property (weak, nonatomic) IBOutlet UIButton *jumpBtn;
+
 @end
 
 @implementation AdverseVC

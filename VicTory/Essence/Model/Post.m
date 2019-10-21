@@ -35,6 +35,12 @@
         
         CGFloat middleW = textMaxSize.width;
         CGFloat middleH = middleW * self.height / self.width;
+#warning why?
+        //处理超长图片
+        if (middleH >= SCREEN_H) {
+            middleH = 200;
+            self.isLongPicture = YES;
+        }
         CGFloat middleY = _cellHeight;
         CGFloat middleX = 10;
         self.middleFrame = CGRectMake(middleX, middleY, middleW, middleH);

@@ -7,6 +7,7 @@
 //
 
 //声音
+
 #import "PostThreeView.h"
 #import "Post.h"
 #import <UIImageView+WebCache.h>
@@ -47,4 +48,5 @@
     // %04d : 占据4位，多余的空位用0填补
     self.voiceTimeLbl.text = [NSString stringWithFormat:@"%02zd:%02zd",post.voicetime / 60, post.voicetime % 60];
 }
+
 @end

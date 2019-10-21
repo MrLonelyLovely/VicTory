@@ -116,6 +116,7 @@
     //1为全部，10为图片，29为段子，31为音频，41为视频，默认为1
     if (post.type == 10) {  //图片
         self.pictureView.hidden = NO;
+        self.pictureView.post = post;
         self.videoView.hidden = YES;
         self.voiceView.hidden = YES;
     } else if (post.type == 31) {    //音频

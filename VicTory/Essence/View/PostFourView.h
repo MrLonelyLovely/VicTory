@@ -6,11 +6,17 @@
 //  Copyright © 2019 陈沛. All rights reserved.
 //
 
+//图片
+
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class Post;
+
 @interface PostFourView : UIView
+
+@property (nonatomic, strong) Post *post;
 
 @end
 

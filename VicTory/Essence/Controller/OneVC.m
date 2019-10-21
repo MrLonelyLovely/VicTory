@@ -74,6 +74,7 @@ static NSString * const PostCellID = @"PostCellID";
     [self setupRefresh];
 }
 
+//移除通知，一般在监听者类的dealloc方法中完成，其实是移除监听者
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -328,7 +329,7 @@ static NSString * const PostCellID = @"PostCellID";
 
 -(PostType)postType
 {
-    return PostTypeVideo;
+    return PostTypePicture;
 }
 
 //发送请求给服务器，下拉刷新数据
